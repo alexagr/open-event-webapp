@@ -78,6 +78,12 @@ function timeSince(date) {
 function parser(data) {
 
 	var parsed = "";
+	if (data.statuses.length == 0) {
+		return;
+	}
+	if (tweetNum >= data.statuses.length) {
+	    tweetNum = 0;
+	}
 	var tweet = data.statuses[tweetNum].text;
 	var words = tweet.split(" ");
 	var loklakLinkCount = 0;

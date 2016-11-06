@@ -673,7 +673,8 @@ a {
   }
 
 .title-legend {
-  left: 50px;
+  float: right;
+  width: 215px;
 }
 
 .track-names {
@@ -740,15 +741,16 @@ a {
 }
 
 */
-@media (max-width: 544px) {
+@media (max-width: 767px) {
   .pop-box {
-    width : 350px;
-    .arrow {
-      margin-top :-2.5%;
-    }
+    width: 100%; 
   }
-
+  .pop-box .arrow {
+    left: 48%;
+    margin-top: -10px; 
+  } 
 }
+
 .header-pop {
   display: inline-block;
   //cursor:pointer;
@@ -982,9 +984,6 @@ a {
   span.speaker-name {
     text-align: center;
   }
-  .pop-box {
-    left: 100px;
-  }
 }
 .middle {
   text-align: center;
@@ -1140,8 +1139,8 @@ a {
 
 .tweets-feed {
   color: $gray-dark;
-  line-height: 30px;
-  font-size: 20px;
+  line-height: 22px;
+  font-size: 16px;
   transition: opacity 0.2s linear;
   margin-bottom: 20px;
   height: 100px;
@@ -1153,7 +1152,7 @@ a {
   } 
 
   #dateTweeted {
-    font-size: 15px;
+    font-size: 12px;
     display: block;
   }
 }
@@ -1161,7 +1160,7 @@ a {
 .tweet-row {
   margin-bottom: 80px;
   padding: 0;
-  transform: translateY(30%);
+  transform: translateY(20%);
   .social_twitter {
     font-size: 60px;
     margin-bottom: 12px;

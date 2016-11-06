@@ -29,7 +29,7 @@ window.loklakFetcher = (function() {
 
       var settings = [ 'count', 'source', 'fields', 'limit', 'tzOffset',
         'minified' ];  // Field names for all the possible parameters
-      var defaults = [ 100, 'cache', '', '', 0, true ];  // Default values
+      var defaults = [ 100, 'twitter', '', '', 0, true ];  // Default values
 
       // Check if no options have been provided
       if(typeof options === 'undefined') {
