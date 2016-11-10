@@ -14,7 +14,11 @@
 
         <div class="navbar-header navbar-right pull-right">
           <ul style="margin-left:20px" class="nav navbar-nav pull-left">
-            <li class="pull-left"><a href="schedule_he.html" style="padding-right:0; padding-left:0;margin-left:15px">РУС|עבר</a></li>
+            {{#sociallinks}}
+              {{#if show}}
+                <li class="pull-left"><a href="{{link}}" style="padding-right:0; padding-left:0;margin-left:15px"><i class="fa fa-lg fa-{{icon}}" aria-hidden="true" title="{{{icon}}}"></i></a></li>
+              {{/if}}
+            {{/sociallinks}}
           </ul>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="margin-left:2em;margin-top:1em;">
             <span class="sr-only">Toggle navigation</span>
@@ -27,15 +31,15 @@
         <div class="hidden-lg hidden-md hidden-sm clearfix"></div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="navlink"><a id="homelink" href="index.html">Начало</a>
+            <li class="navlink"><a id="homelink" href="index.html">Home</a>
           {{#if timeList}}
-              <li class="navlink"><a id="schedulelink" href="schedule.html">Программа</a></li>
+              <li class="navlink"><a id="schedulelink" href="schedule.html">Schedule</a></li>
           {{/if}}
             {{#if roomsinfo}}
-            <li class="navlink"><a id="roomslink" href="rooms.html">Комнаты</a></li>
+            <li class="navlink"><a id="roomslink" href="rooms.html">Rooms</a></li>
             {{/if}}
             {{#if speakerslist}}
-            <li class="navlink"><a id="speakerslink" href="speakers.html">Презентеры</a></li>
+            <li class="navlink"><a id="speakerslink" href="speakers.html">Speakers</a></li>
             {{/if}}
           </ul>
         </div>

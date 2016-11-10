@@ -54,7 +54,7 @@ a {
     li {
       a {
         color: $black;
-        font-size: 11px;
+        font-size: 12px;
       }
     }
   }
@@ -384,7 +384,7 @@ a {
   border-top: 1px solid transparent; 
   cursor: pointer; 
   display: block; 
-  margin: 0 12px 12px 0; 
+  margin: 0 0 12px 12px; 
   position: relative; 
   background: $light-skyblue; 
   width:auto; 
@@ -439,6 +439,9 @@ a {
 .left-border {
   border-left: 1px solid $border-venue;
 }
+.right-border {
+  border-right: 1px solid $border-venue;
+}
 .text{ 
   color: $black; 
   word-wrap: break-word;
@@ -447,7 +450,7 @@ a {
 } 
 .tracks {
   min-height: 70px; 
-  border-left: 1px solid rgba(0,0,0,.10);
+  border-right: 1px solid rgba(0,0,0,.10);
 }
 /* Pop over Track */
 
@@ -456,7 +459,7 @@ a {
   width: 25px;
   height: 10px;
   overflow: hidden;
-  left:6px;
+  right:10px;
   z-index: 1000;
   margin-top: -2.3%;
 
@@ -470,7 +473,7 @@ a {
     -o-transform: rotate(45deg) skew(-10deg, -10deg);
     transform: rotate(45deg) skew(-10deg, -10deg);
     zoom: 1;
-    margin: 1px 0 0 4px;
+    margin: 1px 4px 0 0;
     background: #efefef;
     border-left: 1px solid #c1c1c1;
     border-top: 1px solid #c1c1c1;
@@ -515,7 +518,7 @@ a {
         border-top-right-radius: 5px;
         background: #efefef;
         height: 35px;
-        padding: 5px 5px 0 20px;
+        padding: 5px 20px 0 5px;
         border-bottom: 1px solid #ddd;
       }
 
@@ -683,6 +686,7 @@ a {
 
 .track-names {
   color: $black;
+  margin-right: 15px;
   margin-top: 16%;
 }
 
@@ -692,6 +696,7 @@ a {
     width: 40%;
   }
   .track-names {
+    margin-right: 0;
     margin-top: 0;
   }
 }
@@ -749,7 +754,7 @@ a {
     width: 100%; 
   }
   .pop-box .arrow {
-    left: 48%;
+    right: 48%;
     margin-top: -10px; 
   } 
 }
@@ -1164,6 +1169,10 @@ a {
   }
 }
 
+.col-rtl {
+  float: right !important;
+}
+
 .footer-container {
   max-width: 1600px;
   margin: 0px auto;
@@ -1254,17 +1263,17 @@ a {
     @media (max-width: 892px){
      .contact-details {
         left:0;
-     }   
-    } 
-  }
+    }   
+  } 
+}
 
-  .room-container {
-    .tip-description {
-      color: $gray-dark;
-      text-align: left;
-    }
-  }
-
-  .graytext {
+.room-container {
+  .tip-description {
     color: $gray-dark;
+    text-align: left;
   }
+}
+
+.graytext {
+  color: $gray-dark;
+}

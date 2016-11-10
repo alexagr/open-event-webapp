@@ -20,11 +20,16 @@ const footer = handlebars.compile(fs.readFileSync(__dirname + '/templates/partia
 handlebars.registerPartial('navbar', navbar);
 handlebars.registerPartial('footer', footer);
 
-const tracksTpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/tracks.hbs').toString('utf-8'));
+// const tracksTpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/tracks.hbs').toString('utf-8'));
 const scheduleTpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/schedule.hbs').toString('utf-8'));
 const roomstpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/rooms.hbs').toString('utf-8'));
 const speakerstpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/speakers.hbs').toString('utf-8'));
 const eventtpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/event.hbs').toString('utf-8'));
+
+const scheduleTpl_he = handlebars.compile(fs.readFileSync(__dirname + '/templates/schedule_he.hbs').toString('utf-8'));
+const roomstpl_he = handlebars.compile(fs.readFileSync(__dirname + '/templates/rooms_he.hbs').toString('utf-8'));
+const speakerstpl_he = handlebars.compile(fs.readFileSync(__dirname + '/templates/speakers_he.hbs').toString('utf-8'));
+const eventtpl_he = handlebars.compile(fs.readFileSync(__dirname + '/templates/event_he.hbs').toString('utf-8'));
 
 if(!String.linkify) {
   String.prototype.linkify = function() {
@@ -65,7 +70,7 @@ function transformData(sessions, speakers, event, sponsors, tracksData, roomsDat
 }
 
 function getJsonData(reqOpts) {
-  const appFolder = reqOpts.email + '/' + fold.slugify(reqOpts.name);
+  const appFolder = fold.slugify(reqOpts.name);
   const distJsonsPath = distHelper.distPath + '/' + appFolder + '/json';
 
   const sessionsData = jsonfile.readFileSync(distJsonsPath + '/sessions');
@@ -101,7 +106,7 @@ exports.startZipUpload = function(file) {
 exports.createDistDir = function(req, socket, callback) {
   console.log(req.body);
   const theme = req.body.theme || 'light';
-  const appFolder = req.body.email + '/' + fold.slugify(req.body.name);
+  const appFolder = fold.slugify(req.body.name);
   let emit = false;
 
   if (socket.constructor.name == 'Socket') {
@@ -182,17 +187,43 @@ exports.createDistDir = function(req, socket, callback) {
       });
     },
     (done) => {
+      console.log('===============================COMPILING SASS HE\n');
+      if (emit) socket.emit('live.process', {donePercent: 65, status: "Compiling the SASS HE files"});
+      sass.render({
+        file: __dirname + '/_scss/_themes/_' + theme + '-theme/_' + theme + '_he.scss',
+        outFile: distHelper.distPath + '/' + appFolder + '/css/schedule_he.css'
+      }, function(err, result) {
+        if (!err) {
+          fs.writeFile(distHelper.distPath + '/' + appFolder +  '/css/schedule_he.css', result.css, (writeErr) => {
+            if (writeErr !== null) {
+              console.log(writeErr);
+                return socket.emit('live.error' , {status : "Error in Writing css file" });
+            }
+            done(null, 'sass');
+          });
+        } else {
+          console.log(err);
+          if (emit) socket.emit('live.error', {status: "Error in Compiling SASS HE"} );
+        }
+      });
+    },
+    (done) => {
       console.log('================================WRITING\n');
       if (emit)socket.emit('live.process', {donePercent: 70, status: "Compiling the HTML pages from templates"});
       const jsonData = getJsonData(req.body);
 
       try {
 
-          fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/tracks.html', tracksTpl(jsonData));
+          // fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/tracks.html', tracksTpl(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/schedule.html', scheduleTpl(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/rooms.html', roomstpl(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/speakers.html', speakerstpl(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder +  '/index.html', eventtpl(jsonData));
+
+          fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/schedule_he.html', scheduleTpl_he(jsonData));
+          fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/rooms_he.html', roomstpl_he(jsonData));
+          fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/speakers_he.html', speakerstpl_he(jsonData));
+          fs.writeFileSync(distHelper.distPath + '/' + appFolder +  '/index_he.html', eventtpl_he(jsonData));
       } catch (err)
       {
           console.log(err);
@@ -212,11 +243,11 @@ exports.createDistDir = function(req, socket, callback) {
           })
         }, 30000);
       }
-      
-      mailer.sendMail(req.body.email, fold.slugify(req.body.name), () => {
+
+      // mailer.sendMail(req.body.email, fold.slugify(req.body.name), () => {
         callback(appFolder);
         done(null, 'write');
-      });
+      // });
       
     }
   ]);
@@ -224,7 +255,7 @@ exports.createDistDir = function(req, socket, callback) {
 
 
 exports.pipeZipToRes = function(email, appName, res) {
-  const appFolder = email + '/' + appName;
+  const appFolder = appName;
   console.log('================================ZIPPING\n');
   const zipfile = archiver('zip');
 
