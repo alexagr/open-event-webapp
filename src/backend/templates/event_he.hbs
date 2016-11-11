@@ -30,10 +30,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
     </head>
- 
+
     <body onload="datafetcher()" dir="rtl">
     <a id="top"></a>
-    
+
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container" dir="ltr">
@@ -70,24 +70,24 @@
         </div>
       </div>
     </nav>
-    
+
     <div class="carousel slide" style="margin-bottom: 0;" dir="ltr">
        <div id="info" class="carousel-inner">
-        <div style=" background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url('{{eventurls.background_url }}');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;background-position: center;" class="item active"> 
-          <div class="container"> 
-          <div class="carousel-caption"> 
+        <div style=" background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url('{{eventurls.background_url }}');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;background-position: center;" class="item active">
+          <div class="container">
+          <div class="carousel-caption">
           <h4>{{eventurls.date}}</h4>
-          <h1>{{eventurls.name}}</h1> 
+          <h1>{{eventurls.name}}</h1>
           <h4><i class="fa fa-map-marker"></i>
-           {{eventurls.location}}</h4> 
-           <p></p> 
-          </div> 
+           {{eventurls.location}}</h4>
+           <p></p>
+          </div>
           </div>
         </div>
-      </div> 
+      </div>
     </div>
 
-  <div class="eventpage container" style="background-color: white;"> 
+  <div class="eventpage container" style="background-color: white;">
     {{#if eventurls.register}}
     <div class="listing-panel row">
         <div class="col-md-12">
@@ -95,7 +95,7 @@
            <div class="col-md-4">
            </div>
            <div style="padding-right:30px" class="col-md-8">
-             <a id="ticket-button" style="display: block ; position: relative ; top: -87px ; visibility: hidden; "></a>  
+             <a id="ticket-button" style="display: block ; position: relative ; top: -87px ; visibility: hidden; "></a>
              <a href="{{{eventurls.register}}}" class="pull-right btn btn-lg btn-primary" role="button">Tickets</a>
            </div>
          </div>
@@ -104,23 +104,23 @@
     {{/if}}
     <a id="description"></a>
     <div class ="container">
-      {{#if eventurls.description}}
+      {{#if eventurls.description_he}}
        <div class="row">
-          <div class="eventdes col-md-12"><p style="padding:1px;">{{{eventurls.description}}}</p></div>
-        </div> 
+          <div class="eventdes col-md-12"><p style="padding:1px;">{{{eventurls.description_he}}}</p></div>
+        </div>
       {{/if}}
-    </div> 
+    </div>
    {{#if eventurls.featuresection}}
-  <div class="container">      
-    <div class="row"> 
-      <div class="col-md-12">   
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
         <section class="speakers duplicatable-content">
           <div style="padding:0px;" class="container">
             <div class="row">
               <div class="col-sm-12 text-center">
                   <h1 class="section-header">Featured Speakers</h1>
               </div>
-            </div> 
+            </div>
           </div>
             <div class="row" style="margin-top: 50px">
               {{#speakerslist}}{{#if featured}}
@@ -140,10 +140,10 @@
                          <a href="{{twitter}}"><i class="icon fa fa-twitter"></i></a>
                          {{/if}}
                          {{#if facebook}}
-                         <a href ="{{facebook}}"><i class="icon fa fa-facebook"></i></a>  
+                         <a href ="{{facebook}}"><i class="icon fa fa-facebook"></i></a>
                          {{/if}}
                          {{#if linkedin}}
-                         <a href ="{{linkedin}}"><i class="icon fa fa-linkedin"></i></a>  
+                         <a href ="{{linkedin}}"><i class="icon fa fa-linkedin"></i></a>
                           {{/if}}
                         </div>
                       </div>
@@ -161,17 +161,17 @@
             </div>
 
            {{/if}} {{/speakerslist}}
-            </div>  
+            </div>
       </section>
       <!--<div style="height:400px;overflow-x:hidden;overflow-y:overlay;" class= "twitter col-md-2">
-       <a class="twitter-timeline" href="{{{eventurls.twitterLink}}}"></a> 
+       <a class="twitter-timeline" href="{{{eventurls.twitterLink}}}"></a>
       </div>-->
-    </div> 
+    </div>
   </div>
-    
+
 </div>
   {{/if}}
- </div>  
+ </div>
 
    <div class=row style=background:#f5f5f5;margin-right:0;margin-left:0;height:300px dir="ltr">
     <section class="container">
@@ -191,7 +191,7 @@
   </div>
 
  {{#if eventurls.sponsorsection}}
-    <div style="background:#ffffff" >    
+    <div style="background:#ffffff" >
     <section class="sponsorscont">
       <div style="margin-right:0;margin-left:0;"  class="row">
         <div class="col-sm-12 col-md-12 col-xs-12 text-center">
@@ -200,7 +200,7 @@
       </div>
       <div style="margin-right:0;margin-left:0;"  class="row">
         <div class="col-sm-10 col-sm-offset-1">
-          
+
           <div class="row sponsor-row">
           {{#each sponsorpics}}
           {{#each this}}
@@ -215,13 +215,13 @@
         {{/each}}
            </div> <!-- sponsor-row -->
         </div>
-      </div>  
-    </section> 
-    </div> 
+      </div>
+    </section>
+    </div>
       {{/if}}
 
-{{> footer}}
-  
+{{> footer_he}}
+
 
     <script src="./dependencies/jquery.min.js"></script>
     <script src="./dependencies/bootstrap.min.js" type="text/javascript"></script>
@@ -234,7 +234,7 @@
 
     <script>
     $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
+    $('[data-toggle="tooltip"]').tooltip();
    });
 </script>
 </body>

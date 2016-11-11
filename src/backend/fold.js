@@ -33,7 +33,7 @@ function returnTrackColor(trackInfo, id) {
 }
 
 function foldByTrack(sessions, speakers, trackInfo, reqOpts) {
-  
+
   const trackData = new Map();
   const speakersMap = new Map(speakers.map((s) => [s.id, s]));
   const trackDetails = new Object();
@@ -82,7 +82,7 @@ function foldByTrack(sessions, speakers, trackInfo, reqOpts) {
     if (track == undefined) {
       return;
     }
-    
+
       track.sessions.push({
       start: moment.utc(session.start_time).local().format('HH:mm'),
       end : moment.utc(session.end_time).local().format('HH:mm'),
@@ -134,7 +134,7 @@ function foldByTime(sessions, speakers, trackInfo) {
     let speakersNum = session.speakers.length;
     const tracktitle = (session.track == null) ? " " : session.track.name;
     const tracktitle_he = (session.track == null) ? " " : session.track.name_he;
-      
+
     console.log(date);
     if (!dateMap.has(date)) {
       dateMap.set(date, {
@@ -215,7 +215,7 @@ function foldByDate(tracks) {
 }
 
 function returnTracknames(sessions, trackInfo) {
-  
+
   const trackData = new Map();
   const trackDetails = new Object();
 
@@ -227,7 +227,7 @@ function returnTracknames(sessions, trackInfo) {
     if (!session.start_time) {
       return;
     }
-    
+
     const trackName = (session.track == null) ? 'deftrack' : session.track.name;
     // generate slug/key for session
     const slug = trackName;
@@ -253,7 +253,7 @@ function returnTracknames(sessions, trackInfo) {
   tracks.sort(byProperty('sortKey'));
 
   return tracks;
-}  
+}
 
 function createSocialLinks(event) {
 
@@ -310,18 +310,18 @@ function extractEventUrls(event, speakers, sponsors, reqOpts) {
     if(link.name.toLowerCase() === "twitter") {
       sociallink = link.link;
     }
-  }) 
+  })
 
   sponsors.forEach((sponsor) => {
     if( sponsor.id !==undefined && typeof(sponsor.id)==='number') {
       sponsorsection ++;
     }
-  }) 
+  })
   speakers.forEach((speaker) => {
     if(speaker.featured !== undefined && speaker.featured !==false && speaker.featured===true ) {
          featuresection++;
     }
-  }) 
+  })
 
   const arrayTwitterLink = sociallink.split('/');
   const twitterLink = arrayTwitterLink[arrayTwitterLink.length - 1];
@@ -333,6 +333,7 @@ function extractEventUrls(event, speakers, sponsors, reqOpts) {
     date: event.date,
     name: event.name,
     description: event.description,
+    description_he: event.description_he,
     location: event.location_name,
     latitude: event.latitude,
     longitude: event.longitude,
@@ -543,7 +544,7 @@ function foldByRooms(room, sessions, speakers, trackInfo) {
     if (room == undefined) {
       return;
     }
-    
+
     let venue = '';
     let venue_he = '';
     if(session.microlocation !== null ) {
@@ -586,7 +587,7 @@ function foldByRooms(room, sessions, speakers, trackInfo) {
 
   let roomsDetail = Array.from(roomData.values());
   roomsDetail.sort(byProperty('sortKey'));
-  
+
   let roomsDetailLength = roomsDetail.length;
   for (let i = 0; i < roomsDetailLength; i++) {
     // sort all sessions in each day by 'venue + date'
@@ -599,7 +600,7 @@ function foldByRooms(room, sessions, speakers, trackInfo) {
       if (roomsDetail[i].sessions[j].venue == prevVenue) {
         roomsDetail[i].sessions[j].venue = '';
       } else {
-        prevVenue = roomsDetail[i].sessions[j].venue; 
+        prevVenue = roomsDetail[i].sessions[j].venue;
       }
     }
   }

@@ -16,9 +16,11 @@ const ftpDeployer = require('./ftpdeploy');
 
 const navbar = handlebars.compile(fs.readFileSync(__dirname + '/templates/partials/navbar.hbs').toString('utf-8'));
 const footer = handlebars.compile(fs.readFileSync(__dirname + '/templates/partials/footer.hbs').toString('utf-8'));
+const footer_he = handlebars.compile(fs.readFileSync(__dirname + '/templates/partials/footer_he.hbs').toString('utf-8'));
 
 handlebars.registerPartial('navbar', navbar);
 handlebars.registerPartial('footer', footer);
+handlebars.registerPartial('footer_he', footer_he);
 
 // const tracksTpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/tracks.hbs').toString('utf-8'));
 const scheduleTpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/schedule.hbs').toString('utf-8'));
@@ -63,9 +65,9 @@ function transformData(sessions, speakers, event, sponsors, tracksData, roomsDat
   const timeList = fold.foldByTime(sessions, speakers, tracksData);
   const metaauthor = fold.getOrganizerName(event);
   const tracknames = fold.returnTracknames(sessions, tracksData);
-  
-  return {tracks, days, sociallinks, 
-    eventurls, copyright, sponsorpics, 
+
+  return {tracks, days, sociallinks,
+    eventurls, copyright, sponsorpics,
     roomsinfo, apptitle, speakerslist, timeList, metaauthor,tracknames};
 }
 
@@ -235,7 +237,7 @@ exports.createDistDir = function(req, socket, callback) {
     (done) => {
       console.log('=================================SENDING MAIL\n');
       if (emit) socket.emit('live.process', {donePercent: 80, status: "Website is being generated"});
-      
+
       if (req.body.ftpdetails) {
         setTimeout(()=>{
           ftpDeployer.deploy(req.body.ftpdetails, appFolder, () => {
@@ -248,7 +250,7 @@ exports.createDistDir = function(req, socket, callback) {
         callback(appFolder);
         done(null, 'write');
       // });
-      
+
     }
   ]);
 };
