@@ -1,7 +1,7 @@
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
+        <div class="container" dir="ltr">
             <div class="navbar-header navbar-left pull-left">
                 <a class="navbar-brand" href="{{ eventurls.main_page_url }}">
                     {{#if eventurls.logo_url}}
@@ -14,11 +14,7 @@
 
         <div class="navbar-header navbar-right pull-right">
           <ul style="margin-left:20px" class="nav navbar-nav pull-left">
-            {{#sociallinks}}
-              {{#if show}}
-                <li class="pull-left"><a href="{{link}}" style="padding-right:0; padding-left:0;margin-left:15px"><i class="fa fa-lg fa-{{icon}}" aria-hidden="true" title="{{{icon}}}"></i></a></li>
-              {{/if}}
-            {{/sociallinks}}
+            <li class="pull-left"><a href="{{otherpage}}.html" style="padding-right:0; padding-left:0;margin-left:15px">РУС|<b>עבר</b></a></li>
           </ul>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="margin-left:2em;margin-top:1em;">
             <span class="sr-only">Toggle navigation</span>
@@ -31,17 +27,12 @@
         <div class="hidden-lg hidden-md hidden-sm clearfix"></div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class="navlink"><a id="homelink" href="index.html">Home</a>
-          {{#if timeList}}
-              <li class="navlink"><a id="schedulelink" href="schedule.html">Schedule</a></li>
-          {{/if}}
-            {{#if roomsinfo}}
-            <li class="navlink"><a id="roomslink" href="rooms.html">Rooms</a></li>
-            {{/if}}
-            {{#if speakerslist}}
-            <li class="navlink"><a id="speakerslink" href="speakers.html">Speakers</a></li>
-            {{/if}}
+            <li class="navlink" align="right"><a id="homelink" href="index_he.html">ראשי</a>
+            <li class="navlink" align="right"><a id="schedulehelink" href="schedule_he.html">תוכנית</a></li>
+            <li class="navlink" align="right"><a id="roomshelink" href="rooms_he.html">חדרים</a></li>
+            <li class="navlink" align="right"><a id="speakerheslink" href="speakers_he.html">מרצים</a></li>
           </ul>
         </div>
       </div>
     </nav>
+

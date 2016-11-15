@@ -15,10 +15,12 @@ const mailer = require('./mailer');
 const ftpDeployer = require('./ftpdeploy');
 
 const navbar = handlebars.compile(fs.readFileSync(__dirname + '/templates/partials/navbar.hbs').toString('utf-8'));
+const navbar_he = handlebars.compile(fs.readFileSync(__dirname + '/templates/partials/navbar_he.hbs').toString('utf-8'));
 const footer = handlebars.compile(fs.readFileSync(__dirname + '/templates/partials/footer.hbs').toString('utf-8'));
 const footer_he = handlebars.compile(fs.readFileSync(__dirname + '/templates/partials/footer_he.hbs').toString('utf-8'));
 
 handlebars.registerPartial('navbar', navbar);
+handlebars.registerPartial('navbar_he', navbar_he);
 handlebars.registerPartial('footer', footer);
 handlebars.registerPartial('footer_he', footer_he);
 

@@ -34,44 +34,7 @@
 
   <body dir="rtl">
     <a id="top"></a>
-
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container" dir="ltr">
-            <div class="navbar-header navbar-left pull-left">
-                <a class="navbar-brand" href="{{ eventurls.main_page_url }}">
-                    {{#if eventurls.logo_url}}
-                        <img alt="{{eventurls.name}}" class="logo logo-dark" src="{{ eventurls.logo_url }}">
-                    {{else}}
-                        {{ eventurls.name }}
-                    {{/if}}
-                </a>
-            </div>
-
-        <div class="navbar-header navbar-right pull-right">
-          <ul style="margin-left:20px" class="nav navbar-nav pull-left">
-            <li class="pull-left"><a href="rooms.html" style="padding-right:0; padding-left:0;margin-left:15px">РУС|<b>עבר</b></a></li>
-          </ul>
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="margin-left:2em;margin-top:1em;">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-
-        <div class="hidden-lg hidden-md hidden-sm clearfix"></div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="navlink"><a id="homelink" href="index_he.html">ראשי</a>
-            <li class="navlink"><a id="schedulehelink" href="schedule_he.html">תוכנית</a></li>
-            <li class="navlink"><a id="roomshelink" href="rooms_he.html">חדרים</a></li>
-            <li class="navlink"><a id="speakershelink" href="speakers_he.html">מרצים</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
+    {{> navbar_he otherpage='rooms'}}
 
   <div class="main container">
     <div class="row">

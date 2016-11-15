@@ -394,6 +394,7 @@ a {
 
   } 
 .sizeevent {
+  cursor: pointer;
   padding: 20px;
   width: auto;
   font-weight: 400;
@@ -917,6 +918,7 @@ a {
       }
      
      .image-holder {
+        cursor: pointer;
         position: relative;
         overflow: hidden;
         margin-bottom: 12px;
@@ -1276,4 +1278,8 @@ a {
 
 .graytext {
   color: $gray-dark;
+}
+
+.hide {
+  display: none;
 }

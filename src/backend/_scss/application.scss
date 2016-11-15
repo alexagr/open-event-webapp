@@ -394,6 +394,7 @@ a {
 
   } 
 .sizeevent {
+  cursor: pointer;
   padding: 20px;
   width: auto;
   font-weight: 400;
@@ -912,6 +913,7 @@ a {
       }
      
      .image-holder {
+        cursor: pointer;
         position: relative;
         overflow: hidden;
         margin-bottom: 12px;
@@ -1255,16 +1257,20 @@ a {
      .contact-details {
         left:0;
      }   
-    } 
-  }
+  } 
+}
 
-  .room-container {
-    .tip-description {
-      color: $gray-dark;
-      text-align: left;
-    }
-  }
-
-  .graytext {
+.room-container {
+  .tip-description {
     color: $gray-dark;
+    text-align: left;
   }
+}
+
+.graytext {
+  color: $gray-dark;
+}
+
+.hide {
+  display: none;
+}

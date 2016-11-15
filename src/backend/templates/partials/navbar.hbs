@@ -14,7 +14,7 @@
 
         <div class="navbar-header navbar-right pull-right">
           <ul style="margin-left:20px" class="nav navbar-nav pull-left">
-            <li class="pull-left"><a href="schedule_he.html" style="padding-right:0; padding-left:0;margin-left:15px">РУС|עבר</a></li>
+            <li class="pull-left"><a href="{{otherpage}}.html" style="padding-right:0; padding-left:0;margin-left:15px"><b>РУС</b>|עבר</a></li>
           </ul>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="margin-left:2em;margin-top:1em;">
             <span class="sr-only">Toggle navigation</span>
@@ -28,16 +28,11 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="navlink"><a id="homelink" href="index.html">Начало</a>
-          {{#if timeList}}
-              <li class="navlink"><a id="schedulelink" href="schedule.html">Программа</a></li>
-          {{/if}}
-            {{#if roomsinfo}}
+            <li class="navlink"><a id="schedulelink" href="schedule.html">Программа</a></li>
             <li class="navlink"><a id="roomslink" href="rooms.html">Комнаты</a></li>
-            {{/if}}
-            {{#if speakerslist}}
             <li class="navlink"><a id="speakerslink" href="speakers.html">Презентеры</a></li>
-            {{/if}}
           </ul>
         </div>
       </div>
     </nav>
+
