@@ -91,6 +91,9 @@ function foldByTrack(sessions, speakers, trackInfo, reqOpts) {
       location: roomName,
       speakers_list: session.speakers.map((speaker) => {
         let spkr = speakersMap.get(speaker.id);
+        if(spkr.photo){
+           spkr.thumb = 'images/thumbnails/' + (spkr.photo).split('/').pop();
+        }
         spkr.nameIdSlug = slugify(spkr.name + spkr.id);
         return spkr;
       }),
@@ -164,6 +167,9 @@ function foldByTime(sessions, speakers, trackInfo) {
       location_he: roomName_he,
       speakers_list: session.speakers.map((speaker) =>  {
         let spkr = speakersMap.get(speaker.id);
+        if(spkr.photo){ 
+           spkr.thumb = 'images/thumbnails/' + (spkr.photo).split('/').pop();
+        }
         spkr.nameIdSlug = slugify(spkr.name + spkr.id);
         return spkr;
       }),
@@ -571,6 +577,9 @@ function foldByRooms(room, sessions, speakers, trackInfo) {
       session_id: session.id,
       speakers_list: session.speakers.map((speaker) => {
         let spkr = speakersMap.get(speaker.id);
+        if(spkr.photo){
+           spkr.thumb = 'images/thumbnails/' + (spkr.photo).split('/').pop();
+        }
         spkr.nameIdSlug = slugify(spkr.name + spkr.id);
         return spkr;
       }),
@@ -641,6 +650,10 @@ function foldBySpeakers(speakers ,sessions, tracksData, reqOpts) {
 
   let speakerslist = [];
   speakers.forEach((speaker) => {
+    var thumb = '';
+    if (speaker.photo) {
+      thumb = 'images/speakers/thumbnails/' + (speaker.photo).split('/').pop();
+    }
     speakerslist.push({
       country: speaker.country,
       featured: speaker.featured,
@@ -656,6 +669,7 @@ function foldBySpeakers(speakers ,sessions, tracksData, reqOpts) {
       name: speaker.name,
       name_he: speaker.name_he,
       photo : speaker.photo,
+      thumb : thumb,
       organisation: speaker.organisation,
       sessions : getAllSessions(speaker.sessions, sessions, tracksData),
       speaker_id: speaker.id,

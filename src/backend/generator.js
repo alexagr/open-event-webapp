@@ -222,19 +222,21 @@ exports.createDistDir = function(req, socket, callback) {
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/schedule.html', scheduleTpl(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/rooms.html', roomstpl(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/speakers.html', speakerstpl(jsonData));
-          fs.writeFileSync(distHelper.distPath + '/' + appFolder +  '/index.html', eventtpl(jsonData));
+          fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/index.html', eventtpl(jsonData));
 
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/schedule_he.html', scheduleTpl_he(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/rooms_he.html', roomstpl_he(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/speakers_he.html', speakerstpl_he(jsonData));
-          fs.writeFileSync(distHelper.distPath + '/' + appFolder +  '/index_he.html', eventtpl_he(jsonData));
+          fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/index_he.html', eventtpl_he(jsonData));
       } catch (err)
       {
           console.log(err);
         if (emit)socket.emit('live.error' , {status : "Error in Compiling/Writing templates"} );
       }
 
-      done(null, 'write');
+      distHelper.generateThumbnails(distHelper.distPath + '/' + appFolder,function(){
+        done(null, 'write');
+      });
     },
     (done) => {
       console.log('=================================SENDING MAIL\n');
