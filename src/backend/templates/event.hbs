@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-  <meta name="description" content="{{ apptitle }} Schedule">
+  <meta name="description" content="{{ apptitle }}">
   <meta name="author" content="{{ metaauthor }}">
 
   <title>{{ apptitle }}</title>
@@ -30,47 +30,47 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
     </head>
- 
+
     <body onload="datafetcher()">
     <a id="top"></a>
     {{> navbar otherpage='index_he'}}
-    
+
     <div class="carousel slide" style="margin-bottom: 0;">
        <div id="info" class="carousel-inner">
-        <div style=" background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url('{{eventurls.background_url }}');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;background-position: center;" class="item active"> 
-          <div class="container"> 
-          <div class="carousel-caption"> 
+        <div style=" background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url('{{eventurls.background_url }}');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;background-position: center;" class="item active">
+          <div class="container">
+          <div class="carousel-caption">
           <h4>{{eventurls.date}}</h4>
-          <h1>{{eventurls.name}}</h1> 
+          <h1>{{eventurls.name}}</h1>
           <h4><i class="fa fa-map-marker"></i>
-           {{eventurls.location}}</h4> 
-           <p></p> 
-          </div> 
+           {{eventurls.location}}</h4>
+           <p></p>
+          </div>
           </div>
         </div>
-      </div> 
+      </div>
     </div>
 
-  <div class="eventpage container" style="background-color: white;"> 
+  <div class="eventpage container" style="background-color: white;">
     <a id="description"></a>
     <div class ="container">
       {{#if eventurls.description}}
        <div class="row">
           <div class="eventdes col-md-12"><p style="padding:1px;">{{{eventurls.description}}}</p></div>
-        </div> 
+        </div>
       {{/if}}
-    </div> 
+    </div>
    {{#if eventurls.featuresection}}
-  <div class="container">      
-    <div class="row"> 
-      <div class="col-md-12">   
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
         <section class="speakers duplicatable-content">
           <div style="padding:0px;" class="container">
             <div class="row">
               <div class="col-sm-12 text-center">
                   <h1 class="section-header">Featured Speakers</h1>
               </div>
-            </div> 
+            </div>
           </div>
             <div class="row" style="margin-top: 50px">
               {{#speakerslist}}{{#if featured}}
@@ -90,10 +90,10 @@
                          <a href="{{twitter}}"><i class="icon fa fa-twitter"></i></a>
                          {{/if}}
                          {{#if facebook}}
-                         <a href ="{{facebook}}"><i class="icon fa fa-facebook"></i></a>  
+                         <a href ="{{facebook}}"><i class="icon fa fa-facebook"></i></a>
                          {{/if}}
                          {{#if linkedin}}
-                         <a href ="{{linkedin}}"><i class="icon fa fa-linkedin"></i></a>  
+                         <a href ="{{linkedin}}"><i class="icon fa fa-linkedin"></i></a>
                           {{/if}}
                         </div>
                       </div>
@@ -111,17 +111,17 @@
             </div>
 
            {{/if}} {{/speakerslist}}
-            </div>  
+            </div>
       </section>
       <!--<div style="height:400px;overflow-x:hidden;overflow-y:overlay;" class= "twitter col-md-2">
-       <a class="twitter-timeline" href="{{{eventurls.twitterLink}}}"></a> 
+       <a class="twitter-timeline" href="{{{eventurls.twitterLink}}}"></a>
       </div>-->
-    </div> 
+    </div>
   </div>
-    
+
 </div>
   {{/if}}
- </div>  
+ </div>
 
    <div class=row style=background:#f5f5f5;margin-right:0;margin-left:0;height:300px>
     <section class="container">
@@ -140,7 +140,7 @@
     </section>
   </div>
 
-  <div class="eventpage container" style="background-color: white;"> 
+  <div class="eventpage container" style="background-color: white;">
     <div class ="container">
        <div class="row">
         <style type="text/css">
@@ -148,13 +148,13 @@
              .mobile {
                 display: none;
              }
-          }          
+          }
         </style>
         <div class="mobile">
         <hr style="clear:both">
         <img src="dependencies/tip.jpg"/>
         <div class="eventdes col-md-12">
-        <p>Для просмотра программы фестиваля, нажмите на кнопку <img src="dependencies/iconbar.png"/> в правом верхнем углу и 
+        <p>Для просмотра программы фестиваля, нажмите на кнопку <img src="dependencies/iconbar.png"/> в правом верхнем углу и
         выберите <b>&laquo;ПРОГРАММА&raquo;</b>.<br />
 
         <p>Программой фестиваля будет удобнее пользоваться, если создать для неё иконку на рабочем столе.<br />
@@ -167,13 +167,13 @@
         </p>
         </div>
         </div>
-        </div> 
-    </div> 
- </div>  
+        </div>
+    </div>
+ </div>
 
 
  {{#if eventurls.sponsorsection}}
-    <div style="background:#ffffff" >    
+    <div style="background:#ffffff" >
     <section class="sponsorscont">
       <div style="margin-right:0;margin-left:0;"  class="row">
         <div class="col-sm-12 col-md-12 col-xs-12 text-center">
@@ -182,7 +182,7 @@
       </div>
       <div style="margin-right:0;margin-left:0;"  class="row">
         <div class="col-sm-10 col-sm-offset-1">
-          
+
           <div class="row sponsor-row">
           {{#each sponsorpics}}
           {{#each this}}
@@ -197,13 +197,13 @@
         {{/each}}
            </div> <!-- sponsor-row -->
         </div>
-      </div>  
-    </section> 
-    </div> 
+      </div>
+    </section>
+    </div>
  {{/if}}
 
 {{> footer}}
-  
+
 
     <script src="./dependencies/jquery.min.js"></script>
     <script src="./dependencies/bootstrap.min.js" type="text/javascript"></script>
@@ -216,7 +216,7 @@
 
     <script>
     $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
+    $('[data-toggle="tooltip"]').tooltip();
    });
 </script>
 </body>
