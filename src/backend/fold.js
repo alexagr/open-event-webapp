@@ -145,6 +145,8 @@ function foldByTime(sessions, speakers, trackInfo) {
         date: moment.utc(session.start_time).local().format('dddd, D MMM'),
         date_ru: moment.utc(session.start_time).local().locale("ru").format('dddd, D MMMM'),
         date_he: moment.utc(session.start_time).local().locale("he").format('dddd, D MMMM'),
+        date_short_ru: moment.utc(session.start_time).local().locale("ru").format('dddd DD/MM'),
+        date_short_he: moment.utc(session.start_time).local().locale("he").format('dddd DD/MM'),
         times: new Map()
       })
     }
@@ -167,7 +169,7 @@ function foldByTime(sessions, speakers, trackInfo) {
       location_he: roomName_he,
       speakers_list: session.speakers.map((speaker) =>  {
         let spkr = speakersMap.get(speaker.id);
-        if(spkr.photo){ 
+        if(spkr.photo){
            spkr.thumb = 'images/thumbnails/' + (spkr.photo).split('/').pop();
         }
         spkr.nameIdSlug = slugify(spkr.name + spkr.id);
@@ -337,10 +339,13 @@ function extractEventUrls(event, speakers, sponsors, reqOpts) {
     logo_url: event.logo,
     background_url: event.background_image,
     date: event.date,
+    date_he: event.date_he,
     name: event.name,
+    name_he: event.name_he,
     description: event.description,
     description_he: event.description_he,
     location: event.location_name,
+    location_he: event.location_name_he,
     latitude: event.latitude,
     longitude: event.longitude,
     register: event.ticket_url,
@@ -622,6 +627,11 @@ function getAppName(event) {
     return name;
 }
 
+function getAppNameHe(event) {
+    const name = event.name_he;
+    return name;
+}
+
 function getOrganizerName(event) {
     const name = event.organizer_name;
     return name;
@@ -730,6 +740,7 @@ module.exports.foldByLevel = foldByLevel;
 module.exports.foldByRooms = foldByRooms;
 module.exports.slugify = slugify;
 module.exports.getAppName = getAppName;
+module.exports.getAppNameHe = getAppNameHe;
 module.exports.getOrganizerName = getOrganizerName;
 module.exports.foldBySpeakers = foldBySpeakers;
 module.exports.foldByTime = foldByTime;

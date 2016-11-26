@@ -64,13 +64,14 @@ function transformData(sessions, speakers, event, sponsors, tracksData, roomsDat
   const roomsinfo  =  fold.foldByRooms(roomsData, sessions, speakers, tracksData);
   const speakerslist = fold.foldBySpeakers(speakers, sessions, tracksData, reqOpts);
   const apptitle = fold.getAppName(event);
+  const apptitle_he = fold.getAppNameHe(event);
   const timeList = fold.foldByTime(sessions, speakers, tracksData);
   const metaauthor = fold.getOrganizerName(event);
   const tracknames = fold.returnTracknames(sessions, tracksData);
 
   return {tracks, days, sociallinks,
     eventurls, copyright, sponsorpics,
-    roomsinfo, apptitle, speakerslist, timeList, metaauthor,tracknames};
+    roomsinfo, apptitle, apptitle_he, speakerslist, timeList, metaauthor,tracknames};
 }
 
 function getJsonData(reqOpts) {

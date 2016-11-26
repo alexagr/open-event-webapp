@@ -35,7 +35,7 @@
 <body>
   <a id="top"></a>
   {{> navbar otherpage='schedule_he'}}
-  
+
   <div class="main container" id="session-list">
     <div class="row">
       <div class="middle col-sm-12">
@@ -49,7 +49,7 @@
 
     <p class="date-list">
     {{#timeList}}
-      <span class="date-pill"><a href="./schedule.html#{{slug}}"> {{date_ru}} </a></span>
+      <span class="date-pill"><a href="./schedule.html#{{slug}}"> {{date_short_ru}} </a></span>
     {{/timeList}}
     </p>
 
@@ -148,7 +148,7 @@
                           <div class="blacktext">
                             <p><i>{{location}}</i></p>
                             <p>{{sessiondate_ru}}, <span>{{start}} - {{end}}</span></p>
-                            <p> 
+                            <p>
                               <ul class="title-inline">
                                 <li  style="background-color:{{{color}}}" class="titlecolor"></li>&nbsp;
                                 <li class="blacktext">{{tracktitle}}</li>
@@ -167,7 +167,7 @@
           {{/timeList}}
 
         </div>
-      </div>   
+      </div>
       <div class="track-names">
       {{#tracknames}}
       {{#if title}}
@@ -176,8 +176,8 @@
           <li>{{title}}</li>
         </ul>
       {{/if}}
-      {{/tracknames}}  
-      </div>     
+      {{/tracknames}}
+      </div>
     </div>
   </div>
 

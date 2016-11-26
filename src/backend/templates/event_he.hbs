@@ -14,7 +14,7 @@
   <meta name="description" content="{{ apptitle }} Schedule">
   <meta name="author" content="{{ metaauthor }}">
 
-  <title>{{ apptitle }}</title>
+  <title>{{ apptitle_he }}</title>
 
   <!-- Bootstrap core CSS -->
   <!-- Latest compiled and minified CSS -->
@@ -35,15 +35,15 @@
     <a id="top"></a>
     {{> navbar_he otherpage='index'}}
 
-    <div class="carousel slide" style="margin-bottom: 0;" dir="ltr">
+    <div class="carousel slide" style="margin-bottom: 0;">
        <div id="info" class="carousel-inner">
         <div style=" background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)), url('{{eventurls.background_url }}');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;background-position: center;" class="item active">
           <div class="container">
           <div class="carousel-caption">
-          <h4>{{eventurls.date}}</h4>
-          <h1>{{eventurls.name}}</h1>
+          <h4>{{eventurls.date_he}}</h4>
+          <h1>{{eventurls.name_he}}</h1>
           <h4><i class="fa fa-map-marker"></i>
-           {{eventurls.location}}</h4>
+           {{eventurls.location_he}}</h4>
            <p></p>
           </div>
           </div>
@@ -154,7 +154,7 @@
     </section>
   </div>
 
-  <div class="eventpage container" style="background-color: white;"> 
+  <div class="eventpage container" style="background-color: white;">
     <div class ="container">
        <div class="row">
         <style type="text/css">
@@ -162,7 +162,7 @@
              .mobile {
                 display: none;
              }
-          }          
+          }
         </style>
         <div class="mobile">
         <hr style="clear:both">
@@ -179,8 +179,8 @@
         </p>
         </div>
         </div>
-        </div> 
-    </div> 
+        </div>
+    </div>
  </div>
 
  {{#if eventurls.sponsorsection}}
