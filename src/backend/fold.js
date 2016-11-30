@@ -514,10 +514,11 @@ function sessionsByRooms(id, sessions, trackInfo) {
  return sessionInRooms;
 }
 
-function foldByRooms(room, sessions, speakers, trackInfo) {
+function foldByRooms(rooms, sessions, speakers, trackInfo) {
   const roomData = new Map();
   const trackDetails = new Object();
   const speakersMap = new Map(speakers.map((s) => [s.id, s]));
+  const roomIds = new Map(rooms.map((s) => [s.name, s.id]));
   const microlocationArray = [];
   trackInfo.forEach((track) => {
     trackDetails[track.id] = track.color;
@@ -558,6 +559,7 @@ function foldByRooms(room, sessions, speakers, trackInfo) {
 
     let venue = '';
     let venue_he = '';
+    let venue_id = 99;
     if(session.microlocation !== null ) {
       const slug2 = date + '-' + session.microlocation.name ;
       if(microlocationArray.indexOf(slug2) == -1 ) {
@@ -565,6 +567,11 @@ function foldByRooms(room, sessions, speakers, trackInfo) {
       }
       venue = session.microlocation.name;
       venue_he = session.microlocation.name_he;
+      venue_id = roomIds.get(venue);
+    }
+    let venue_sort = venue_id.toString();
+    if (venue_id < 10) {
+        venue_sort = '0' + venue_sort;
     }
 
     room.sessions.push({
@@ -595,7 +602,7 @@ function foldByRooms(room, sessions, speakers, trackInfo) {
       sessiondate_he: moment.utc(session.start_time).local().locale('he').format('dddd, D MMM'),
       roomname: roomName,
       roomname_he: roomName_he,
-      sortKey: venue + moment.utc(session.start_time).local().format('HH:mm')
+      sortKey: venue_sort + moment.utc(session.start_time).local().format('HH:mm')
     });
   });
 
