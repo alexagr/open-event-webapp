@@ -115,42 +115,18 @@
                         {{long_biography_he}}
                       </p>
                       {{/if}}
-                      <p class="blacktext session-speaker-social">
-                        <div class="session-speakers-more">
-                          {{#if website}}
-                          <a class="blacktext social speaker-social" href="{{{website}}}"}>
-                            <i class="fa fa-home"></i> Web
-                          </a>&nbsp;
-                          {{/if}}
-                          {{#if github}}
-                          <a class="blacktext  social speaker-social" href="{{{github}}}"}>
-                            <i class="fa fa-github"></i> Github
-                          </a>&nbsp;
-                          {{/if}}
-                          {{#if twitter}}
-                          <a class="blacktext  social speaker-social" href="{{{twitter}}}"}>
-                            <i class="fa fa-twitter"></i> Twitter
-                          </a>&nbsp;
-                          {{/if}}
-                          {{#if linkedin}}
-                          <a class="blacktext  social speaker-social" href="{{{linkedin}}}"}>
-                            <i class="fa fa-linkedin"></i> LinkedIn
-                          </a>
-                          {{/if}}
-                        </div>
-                      </p>
                       <hr style="clear:both">
                     {{/speakers_list}}
                       <div class="blacktext">
                         {{#if roomname_he}}
-                        <p><i>{{roomname_he}}</i></p>
+                        <p><i style="color:{{{roomcolor}}}" class="fa fa-flag" aria-hidden="true"></i>&nbsp;<i>{{roomname_he}}</i></p>
                         {{/if}}
                         {{#if sessiondate_he}}
                         <p>{{sessiondate_he}}, <span>{{start}} - {{end}}</span></p>
                         {{/if}}
                         <p>
                           <ul class="title-inline">
-                            <li  style="background-color:{{{color}}}" class="titlecolor"></li>&nbsp;
+                            <li style="background-color:{{{color}}}" class="titlecolor"></li>&nbsp;
                             <li class="blacktext">{{tracktitle_he}}</li>
                           </ul>
                         </p><br>

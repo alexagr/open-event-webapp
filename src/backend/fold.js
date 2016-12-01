@@ -130,6 +130,7 @@ function foldByTime(sessions, speakers, trackInfo) {
   sessions.forEach((session) => {
     const roomName = (session.microlocation == null) ? ' ' : session.microlocation.name;
     const roomName_he = (session.microlocation == null) ? ' ' : session.microlocation.name_he;
+    const roomColor = (session.microlocation == null) ? ' ' : session.microlocation.color;
     const session_type = (session.session_type == null) ? ' ' : session.session_type.name ;
     const session_type_he = (session.session_type_he == null) ? ' ' : session.session_type.name_he ;
     let date = moment.utc(session.start_time).local().format('YYYY-MM-DD');
@@ -167,6 +168,7 @@ function foldByTime(sessions, speakers, trackInfo) {
       type_he: session_type_he,
       location: roomName,
       location_he: roomName_he,
+      location_color: roomColor,
       speakers_list: session.speakers.map((speaker) =>  {
         let spkr = speakersMap.get(speaker.id);
         if(spkr.photo){
@@ -533,6 +535,7 @@ function foldByRooms(rooms, sessions, speakers, trackInfo) {
     const date = moment.utc(session.start_time).local().format('YYYY-MM-DD');
     const roomName = (session.microlocation == null) ? ' ' : session.microlocation.name;
     const roomName_he = (session.microlocation == null) ? ' ' : session.microlocation.name_he;
+    const roomColor = (session.microlocation == null) ? ' ' : session.microlocation.color;
     const slug = date ;
     const tracktitle = (session.track == null) ? " " : session.track.name;
     const tracktitle_he = (session.track == null) ? " " : session.track.name_he;
@@ -602,6 +605,7 @@ function foldByRooms(rooms, sessions, speakers, trackInfo) {
       sessiondate_he: moment.utc(session.start_time).local().locale('he').format('dddd, D MMM'),
       roomname: roomName,
       roomname_he: roomName_he,
+      roomcolor: roomColor,
       sortKey: venue_sort + moment.utc(session.start_time).local().format('HH:mm')
     });
   });
@@ -720,6 +724,7 @@ function getAllSessions(speakerid , session, trackInfo){
 sessiondetail.forEach((session) => {
   const roomname = (session.detail == null) ?' ': session.detail.microlocation.name;
   const roomname_he = (session.detail == null) ?' ': session.detail.microlocation.name_he;
+  const roomcolor = (session.detail == null) ?' ': session.detail.microlocation.color;
   speakersession.push({
       start: moment.utc(session.detail.start_time).local().format('HH:mm'),
       end:   moment.utc(session.detail.end_time).local().format('HH:mm'),
@@ -729,8 +734,9 @@ sessiondetail.forEach((session) => {
       date_ru: moment.utc(session.detail.start_time).local().locale('ru').format('dddd, D MMM'),
       date_he: moment.utc(session.detail.start_time).local().locale('he').format('dddd, D MMM'),
       color: returnTrackColor(trackDetails, (session.detail.track == null) ? null : session.detail.track.id),
-      microlocation: roomname,
-      microlocation_he: roomname_he,
+      location: roomname,
+      location_he: roomname_he,
+      location_color: roomcolor,
       session_id: session.detail.id
    });
 })
