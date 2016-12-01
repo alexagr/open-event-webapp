@@ -82,19 +82,20 @@
                         {{title_he}}
                       </h4>
                       <div id="desc-{{session_id}}">
-                        <p class="collapse">
+                        <div class="collapse">
+                        <p>
                           {{{language_he}}}
                         </p>
-                        <hr style="clear:both" class="collapse">
+                        <hr style="clear:both">
                         {{#if description_he}}
-                        <p class="collapse">
+                        <p>
                           <span class="tip-description">
                             {{{description_he}}}
                           </span>
                         </p>
-                        <hr style="clear:both" class="collapse">
+                        <hr style="clear:both">
                         {{/if}}
-                        <div class="session-speakers-list collapse">
+                        <div class="session-speakers-list">
                           {{#each speakers_list}}
                           <a href="speakers_he.html#{{id}}">
                             <p class="session-speakers-less">
@@ -113,35 +114,13 @@
                             {{organisation_he}}
                           </p>
                           {{/if}}
+                          {{!--
                           {{#if long_biography_he}}
                           <p class="session-speakers-more">
                             {{long_biography_he}}
                           </p>
                           {{/if}}
-                          <p class="blacktext session-speaker-social">
-                            <div class="session-speakers-more">
-                              {{#if website}}
-                              <a class="blacktext social speaker-social" href="{{{website}}}"}>
-                                <i class="fa fa-home"></i> Web
-                              </a>&nbsp;
-                              {{/if}}
-                              {{#if github}}
-                              <a class="blacktext  social speaker-social" href="{{{github}}}"}>
-                                <i class="fa fa-github"></i> Github
-                              </a>&nbsp;
-                              {{/if}}
-                              {{#if twitter}}
-                              <a class="blacktext  social speaker-social" href="{{{twitter}}}"}>
-                                <i class="fa fa-twitter"></i> Twitter
-                              </a>&nbsp;
-                              {{/if}}
-                              {{#if linkedin}}
-                              <a class="blacktext  social speaker-social" href="{{{linkedin}}}"}>
-                                <i class="fa fa-linkedin"></i> LinkedIn
-                              </a>
-                              {{/if}}
-                            </div>
-                          </p>
+                          --}}
                           <hr style="clear:both">
                           {{/each}}
                           <div class="blacktext">
@@ -149,11 +128,12 @@
                             <p>{{sessiondate_he}}, <span>{{start}} - {{end}}</span></p>
                             <p>
                               <ul class="title-inline">
-                                <li  style="background-color:{{{color}}}" class="titlecolor"></li>&nbsp;
+                                <li style="background-color:{{{color}}}" class="titlecolor"></li>&nbsp;
                                 <li class="blacktext">{{tracktitle_he}}</li>
                               </ul>
                             </p><br>
                           </div>
+                        </div>
                         </div>
                       </div>
                     </div>

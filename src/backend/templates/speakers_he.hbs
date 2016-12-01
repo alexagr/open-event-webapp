@@ -33,7 +33,7 @@
     </head>
   <body style="background-color: #f8f8f8 !important;" dir="rtl">
   <a id="top"></a>
-  {{> navbar otherpage='speakers'}}
+  {{> navbar_he otherpage='speakers'}}
 
 <div class="main container" style="background-color: #fff; padding: 2%">
     <div class="row">
@@ -49,7 +49,7 @@
   <div class="row">
   {{#speakerslist}}
     <div class="speaker-inline col-xs-12 col-sm-6 col-md-4">
-      <a class="anchor" name="{{speaker_id}}"></a>
+      <a class="anchor" id="{{speaker_id}}"></a>
       <div class="speaker-container"
         data-toggle="collapse"
         data-target="#desc-{{speaker_id}} .collapse"
@@ -84,7 +84,7 @@
                 </h5>
                 <p class="speaker-location">{{microlocation_he}}</p>
                 <a href="schedule_he.html#{{session_id}}">
-                  <h4 style="background-color:{{{color}}}"  class="sizeevent event">
+                  <h4 style="background-color:{{{color}}}"  class="speaker-event">
                     <span class="time-track">{{start}} - {{end}}&nbsp;&bull;&nbsp;</span><br />
                     {{{title_he}}}
                   </h4>

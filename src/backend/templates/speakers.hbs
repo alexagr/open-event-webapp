@@ -49,7 +49,7 @@
   <div class="row">
   {{#speakerslist}}
     <div class="speaker-inline col-xs-12 col-sm-6 col-md-4">
-      <a class="anchor" name="{{speaker_id}}"></a>
+      <a class="anchor" id="{{speaker_id}}"></a>
       <div class="speaker-container"
         data-toggle="collapse"
         data-target="#desc-{{speaker_id}} .collapse"
@@ -84,7 +84,7 @@
                 </h5>
                 <p class="speaker-location">{{microlocation}}</p>
                 <a href="schedule.html#{{session_id}}">
-                  <h4 style="background-color:{{{color}}}"  class="sizeevent event">
+                  <h4 style="background-color:{{{color}}}"  class="speaker-event">
                     <span class="time-track">{{start}} - {{end}}&nbsp;&bull;&nbsp;</span><br />
                     {{{title}}}
                   </h4>
