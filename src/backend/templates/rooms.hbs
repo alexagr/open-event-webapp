@@ -110,11 +110,18 @@
                         {{organisation}}
                       </p>
                       {{/if}}
+                      {{#if short_biography}}
+                      <p class="session-speakers-more">
+                        <i>{{short_biography}}</i>
+                      </p>
+                      {{/if}}
+                      {{!--
                       {{#if long_biography}}
                       <p class="session-speakers-more">
                         {{long_biography}}
                       </p>
                       {{/if}}
+                      --}}
                       <hr style="clear:both">
                     {{/speakers_list}}
                       <div class="blacktext">

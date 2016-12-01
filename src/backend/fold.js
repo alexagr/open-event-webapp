@@ -686,6 +686,8 @@ function foldBySpeakers(speakers ,sessions, tracksData, reqOpts) {
       website: speaker.website ,
       long_biography: speaker.long_biography ,
       long_biography_he: speaker.long_biography_he ,
+      short_biography: speaker.short_biography ,
+      short_biography_he: speaker.short_biography_he ,
       mobile: speaker.mobile,
       name: speaker.name,
       name_he: speaker.name_he,

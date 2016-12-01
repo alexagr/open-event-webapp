@@ -65,13 +65,18 @@
         <p class="speaker-name">{{{name_he}}}</p>
         <div id="desc-{{speaker_id}}">
           <div class=" collapse">
-          {{#if long_biography_he}}
           <hr class="speaker-hr">
+          {{#if short_biography_he}}
+          <p class="speaker-bio">
+            <i>{{{short_biography_he}}}</i>
+          </p>
+          {{/if}}
+          {{#if long_biography_he}}
           <p class="speaker-bio">
             {{{long_biography_he}}}
           </p>
-          {{/if}}
           <hr class="speaker-hr">
+          {{/if}}
           <div class="speaker-container">
             <h4 class="speaker-title" class="text"><strong>יחידות</strong></h4>
             <div class="row">
