@@ -3,7 +3,7 @@
   Note to contributors: Do not submit any changes to this page, as it is generated automatically
   from https://github.com/fossasia/open-event-scraper.
 -->
-<html lang="en">
+<html lang="ru">
 <head>
 
   <meta charset="utf-8">
@@ -31,9 +31,9 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
-    </head>
+</head>
 
-    <body onload="datafetcher()">
+<body>
     <a id="top"></a>
     {{> navbar otherpage='index_he'}}
 
@@ -62,8 +62,8 @@
         </div>
       {{/if}}
     </div>
-   {{#if eventurls.featuresection}}
-  <div class="container">
+    {{#if eventurls.featuresection}}
+    <div class="container">
     <div class="row">
       <div class="col-md-12">
         <section class="speakers duplicatable-content">
@@ -114,57 +114,14 @@
 
            {{/if}} {{/speakerslist}}
             </div>
-      </section>
-      <!--<div style="height:400px;overflow-x:hidden;overflow-y:overlay;" class= "twitter col-md-2">
-       <a class="twitter-timeline" href="{{{eventurls.twitterLink}}}"></a>
-      </div>-->
-    </div>
-  </div>
-
-</div>
-  {{/if}}
-  <!--
- </div>
-
-   <div class=row style=background:#f5f5f5;margin-right:0;margin-left:0;height:300px>
-    <section class="container">
-      <div class=tweet-row>
-        <div class="col-sm-12 col-md-12 col-xs-12">
-          <a href="https://twitter.com/LimmudIsrael"><i class="social_twitter fa fa-twitter"></i></a>
-          <div class=tweets-feed id=tweets data-count=10 data-query=#LimmudEilat data-from=LimmudIsrael data-source=twitter>
-            <div class=arrow-up></div>
-              <p id=tweet class=tweet>
-              Loading...
-              </p>
-              <span style=margin-bottom:20px id=dateTweeted></span>
-          </div>
-        </div>
+        </section>
       </div>
-    </section>
-  </div>
+    </div>
+    </div>
+  {{/if}}
 
-  <div class="eventpage container" style="background-color: white;">
--->
     <div class ="container">
-       <div class="row">
-        <style type="text/css">
-        @media (min-width: 600px) {
-           .mobile {
-              display: none;
-           }
-           .desktop {
-              display: block;
-           }
-        }
-        @media (max-width: 600px) {
-          .mobile {
-             display: block;
-          }
-          .desktop {
-            display: none;
-          }
-        }
-        </style>
+      <div class="row">
         <div class="mobile">
         <hr style="clear:both">
         <img src="dependencies/tip.jpg"/>
@@ -202,9 +159,9 @@
           </p>
         </div>
         </div>
-        </div>
+      </div>
     </div>
- </div>
+  </div>
 
 
  {{#if eventurls.sponsorsection}}
@@ -243,9 +200,6 @@
     <script src="./dependencies/jquery.min.js"></script>
     <script src="./dependencies/bootstrap.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="./js/popover.js"></script>
-    <script src="./dependencies/loklak-fetcher.js" type="text/javascript"></script>
-    <script src="./dependencies/tweets.js" type="text/javascript"></script>
-
     <script src="./js/navbar.js" type="text/javascript"></script>
     <script src="./js/scroll.js" type="text/javascript"></script>
 

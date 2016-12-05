@@ -1322,3 +1322,20 @@ a {
      max-width: 270px;
   }
 }
+
+@media (min-width: 600px) {
+   .mobile {
+      display: none;
+   }
+   .desktop {
+      display: block;
+   }
+}
+@media (max-width: 600px) {
+  .mobile {
+     display: block;
+  }
+  .desktop {
+    display: none;
+  }
+}
