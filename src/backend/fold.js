@@ -139,6 +139,11 @@ function foldByTime(sessions, speakers, trackInfo) {
     const tracktitle = (session.track == null) ? " " : session.track.name;
     const tracktitle_he = (session.track == null) ? " " : session.track.name_he;
 
+    let sortKey = '0' + time;
+    if (moment.utc(session.start_time).local().hours() == 0) {
+        sortKey = '1' + time;
+    }
+
     console.log(date);
     if (!dateMap.has(date)) {
       dateMap.set(date, {
@@ -155,6 +160,7 @@ function foldByTime(sessions, speakers, trackInfo) {
     if (!timeMap.has(time)) {
       timeMap.set(time, {
         caption: time,
+        sortKey: sortKey,
         sessions: []
       })
     }
@@ -198,7 +204,7 @@ function foldByTime(sessions, speakers, trackInfo) {
   dates.sort(byProperty('caption'));
   dates.forEach((date) => {
     const times = Array.from(date.times.values());
-    times.sort(byProperty('caption'));
+    times.sort(byProperty('sortKey'));
     date.times = times;
   });
 
@@ -577,6 +583,12 @@ function foldByRooms(rooms, sessions, speakers, trackInfo) {
         venue_sort = '0' + venue_sort;
     }
 
+    let time = moment.utc(session.start_time).local().format('HH:mm');
+    let sortKey = venue_sort + '0' + time;
+    if (moment.utc(session.start_time).local().hours() == 0) {
+        sortKey = venue_sort + '1' + time;
+    }
+
     room.sessions.push({
       start: moment.utc(session.start_time).local().format('HH:mm'),
       color: returnTrackColor(trackDetails, (session.track == null) ? null : session.track.id),
@@ -606,7 +618,7 @@ function foldByRooms(rooms, sessions, speakers, trackInfo) {
       roomname: roomName,
       roomname_he: roomName_he,
       roomcolor: roomColor,
-      sortKey: venue_sort + moment.utc(session.start_time).local().format('HH:mm')
+      sortKey: sortKey
     });
   });
 
