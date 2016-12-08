@@ -65,6 +65,7 @@ function transformData(sessions, speakers, event, sponsors, tracksData, roomsDat
   const sponsorpics = fold.foldByLevel(sponsors, reqOpts);
   const roomsinfo  =  fold.foldByRooms(roomsData, sessions, speakers, tracksData);
   const speakerslist = fold.foldBySpeakers(speakers, sessions, tracksData, reqOpts);
+  const speakerslist_he = fold.foldBySpeakersHe(speakers, sessions, tracksData, reqOpts);
   const apptitle = fold.getAppName(event);
   const apptitle_he = fold.getAppNameHe(event);
   const timeList = fold.foldByTime(sessions, speakers, tracksData);
@@ -73,7 +74,7 @@ function transformData(sessions, speakers, event, sponsors, tracksData, roomsDat
 
   return {tracks, days, sociallinks,
     eventurls, copyright, sponsorpics,
-    roomsinfo, apptitle, apptitle_he, speakerslist, timeList, metaauthor,tracknames};
+    roomsinfo, apptitle, apptitle_he, speakerslist, speakerslist_he, timeList, metaauthor,tracknames};
 }
 
 function getJsonData(reqOpts) {

@@ -718,6 +718,13 @@ function foldBySpeakers(speakers ,sessions, tracksData, reqOpts) {
   return speakerslist;
 }
 
+function foldBySpeakersHe(speakers ,sessions, tracksData, reqOpts) {
+  let speakerslist = foldBySpeakers(speakers ,sessions, tracksData, reqOpts);
+  speakerslist.sort(byProperty('name_he'));
+  return speakerslist;
+}
+
+
 function getAllSessions(speakerid , session, trackInfo){
   let speakersession =[];
   let sessiondetail = [];
@@ -770,5 +777,6 @@ module.exports.getAppName = getAppName;
 module.exports.getAppNameHe = getAppNameHe;
 module.exports.getOrganizerName = getOrganizerName;
 module.exports.foldBySpeakers = foldBySpeakers;
+module.exports.foldBySpeakersHe = foldBySpeakersHe;
 module.exports.foldByTime = foldByTime;
 module.exports.returnTracknames = returnTracknames;
