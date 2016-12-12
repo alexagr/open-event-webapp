@@ -16,6 +16,9 @@ $(function() {
     else if(findMatch(linkUrl, "sessions.html")){
         $("#sessionslink").addClass('active');
     }
+    else if(findMatch(linkUrl, "map.html")){
+        $("#maplink").addClass('active');
+    }
     else if(findMatch(linkUrl, "rooms_he.html")){
         $("#roomshelink").addClass('active');
     }

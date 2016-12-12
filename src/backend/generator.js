@@ -31,6 +31,7 @@ const scheduleTpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/s
 const roomstpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/rooms.hbs').toString('utf-8'));
 const speakerstpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/speakers.hbs').toString('utf-8'));
 const eventtpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/event.hbs').toString('utf-8'));
+const maptpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/map.hbs').toString('utf-8'));
 
 const scheduleTpl_he = handlebars.compile(fs.readFileSync(__dirname + '/templates/schedule_he.hbs').toString('utf-8'));
 const roomstpl_he = handlebars.compile(fs.readFileSync(__dirname + '/templates/rooms_he.hbs').toString('utf-8'));
@@ -227,6 +228,7 @@ exports.createDistDir = function(req, socket, callback) {
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/rooms.html', roomstpl(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/speakers.html', speakerstpl(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/index.html', eventtpl(jsonData));
+          fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/map.html', maptpl(jsonData));
 
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/schedule_he.html', scheduleTpl_he(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/rooms_he.html', roomstpl_he(jsonData));
