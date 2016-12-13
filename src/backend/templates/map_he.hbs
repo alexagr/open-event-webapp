@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="he">
 <head>
 
   <meta charset="utf-8">
@@ -7,10 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-  <meta name="description" content="{{ apptitle }}">
+  <meta name="description" content="{{ apptitle_he }}">
   <meta name="author" content="{{ metaauthor }}">
 
-  <title>{{ apptitle }}</title>
+  <title>{{ apptitle_he }}</title>
 
   <!-- Bootstrap core CSS -->
   <!-- Latest compiled and minified CSS -->
@@ -18,7 +18,7 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="./dependencies/font-awesome.min.css">
   <link rel="stylesheet" href="./dependencies/bootstrap.min.css">
-  <link rel="stylesheet" href="./css/schedule.css">
+  <link rel="stylesheet" href="./css/schedule_he.css">
 
   {{> analytics}}
 
@@ -29,26 +29,26 @@
       <![endif]-->
 </head>
 
-<body>
+<body dir="rtl">
     <a id="top"></a>
-    {{> navbar otherpage='map_he'}}
+    {{> navbar_he otherpage='map'}}
 
     <div class="main container">
       <div class="row">
         <div class="middle col-sm-12">
           <h2 class="filter-heading track-heading text-center">
             <span>
-              Карта фестиваля
+              מפת הפסטיבל
             </span>
           </h2>
         </div>
       </div>
       
-      <img class="img-responsive" style="margin: 0 auto;" alt="Карта фестиваля" src="images/map.png">
+      <img class="img-responsive" style="margin: 0 auto;" alt="מפת הפסטיבל" src="images/map_he.png">
       
     </div>
 
-    {{> footer}}
+    {{> footer_he}}
 
     <script src="./dependencies/jquery.min.js"></script>
     <script src="./dependencies/bootstrap.min.js" type="text/javascript"></script>

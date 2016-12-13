@@ -28,6 +28,9 @@ $(function() {
     else if(findMatch(linkUrl, "speakers_he.html")){
         $("#speakershelink").addClass('active');
     }
+    else if(findMatch(linkUrl, "map_he.html")){
+        $("#maphelink").addClass('active');
+    }
     else {
         $("#homelink").addClass('active');
     }
