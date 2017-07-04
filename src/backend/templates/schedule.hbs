@@ -52,7 +52,7 @@
 
     <div class="row">
       <div style="margin: 15px 0 0 15px;" class="col-md-9">
-        <div id=track-list style="margin-top:4%;" class="container">
+        <div id=track-list class="container">
 
           {{#timeList}}
             <div style="padding:0" class="col-md-12">
@@ -70,71 +70,79 @@
                 {{#sessions}}
                 <div class="track-inline">
                   <a class="anchor" id="{{session_id}}"></a>
-                  <div class="schedule-container"
-                    data-toggle="collapse"
-                    data-target="#desc-{{session_id}} .collapse"
-                    aria-expanded="false"
-                    aria-controls="desc-{{session_id}}">
-                    <div style="padding-right:0px;">
-                      <h4 style="background-color:{{{color}}}"  class="sizeevent event">
+                  <div style="padding-right:0px;" class="schedule-container">
+                    <div id="title-{{session_id}}" class="sizeevent event" style="background-color:{{{color}}}"
+                      data-toggle="collapse" data-target="#desc-{{session_id}}, #desc2-{{session_id}}">
+                      <h4>
                         {{title}}
                       </h4>
-                      <div id="desc-{{session_id}}">
-                        <div class="collapse">
-                        <p>{{{language}}}</p>
-                        <p><i style="color:{{{location_color}}}" class="fa fa-flag" aria-hidden="true"></i>&nbsp;<i>{{location}}</i></p>
-                        <hr style="clear:both">
-                        {{#if description}}
-                        <p>
-                          <span class="tip-description">
-                            {{{description}}}
-                          </span>
-                        </p>
-                        <hr style="clear:both">
-                        {{/if}}
-                        <div class="session-speakers-list">
-                          {{#each speakers_list}}
-                          <a href="speakers.html#{{id}}">
-                            <p class="session-speakers-less">
-                              <p style="margin-right:20px" class="session-speakers">
-                              {{#if thumb}}
-                                <img onError="this.onerror=null;this.src='dependencies/avatar.png';" class="card-img-top" src="{{{thumb}}}" style="width:10rem; height:10rem; border-radius:50%;"/>
-                              {{else}}
-                                <img class="card-img-top" src="dependencies/avatar.png" style="width:10rem; height:10rem; border-radius:50%;"/>
-                              {{/if}}
-                              </p>
-                              <span class="graytext ">{{name}}</span>
-                            </p>
-                          </a>
-                          {{#if organisation}}
-                          <p class="session-speakers-more">
-                            {{organisation}}
-                          </p>
-                          {{/if}}
-                          {{#if short_biography}}
-                          <p class="session-speakers-more">
-                            <i>{{short_biography}}</i>
-                          </p>
-                          {{/if}}
-                          {{!--
-                          {{#if long_biography}}
-                          <p class="session-speakers-more">
-                            {{long_biography}}
-                          </p>
-                          {{/if}}
-                          --}}
-                          <hr style="clear:both">
-                          {{/each}}
-                          <div class="blacktext">
-                            <p>{{sessiondate_ru}}, <span>{{start}} - {{end}}</span></p>
-                            <p>
-                              <ul class="title-inline">
-                                <li style="background-color:{{{color}}}" class="titlecolor"></li>&nbsp;
-                                <li class="blacktext">{{tracktitle}}</li>
-                              </ul>
-                            </p><br>
-                          </div>
+                      <div id="desc2-{{session_id}}" class="collapse in" style="background-color: {{{color}}}">
+                        <div class="row speaker-short-info">
+                          <h5>
+                          {{#speakers_list}}
+                            {{name}}{{#if @last}}{{else}},{{/if}}
+                          {{/speakers_list}}
+                          </h5>
                         </div>
+                      </div>
+                    </div>
+                    <div id="desc-{{session_id}}" class="collapse">
+                      {{#if language}}
+                      <p><i class="fa fa-language" aria-hidden="true"></i>&nbsp;{{{language}}}</p>
+                      {{/if}}
+                      {{#if location}}
+                      <p><i style="color:{{{location_color}}}" class="fa fa-flag" aria-hidden="true"></i>&nbsp;<i>{{location}}</i></p>
+                      {{/if}}
+                      <hr class="clear-both">
+                      {{#if description}}
+                      <p>
+                        <span class="tip-description">
+                          {{{description}}}
+                        </span>
+                      </p>
+                      <hr class="clear-both">
+                      {{/if}}
+                      <div class="session-speakers-list">
+                        {{#each speakers_list}}
+                        <a href="speakers.html#{{id}}">
+                          <p>
+                            <p class="session-speakers">
+                            {{#if thumb}}
+                              <img onError="this.onerror=null;this.src='dependencies/avatar.png';" class="card-img-top speaker-image-small" src="{{{thumb}}}"/>
+                            {{else}}
+                              <img class="card-img-top speaker-image-small" src="dependencies/avatar.png"/>
+                            {{/if}}
+                            </p>
+                            <span class="graytext ">{{name}}</span>
+                          </p>
+                        </a>
+                        {{#if organisation}}
+                        <p>
+                          {{organisation}}
+                        </p>
+                        {{/if}}
+                        {{#if short_biography}}
+                        <p>
+                          <i>{{short_biography}}</i>
+                        </p>
+                        {{/if}}
+                        {{!--
+                        {{#if long_biography}}
+                        <p>
+                          {{long_biography}}
+                        </p>
+                        {{/if}}
+                        --}}
+                        <hr class="clear-both">
+                        {{/each}}
+                        <div class="blacktext">
+                          <p>{{sessiondate_ru}}, <span>{{start}} - {{end}}</span></p>
+                          <p>
+                            <ul class="title-inline">
+                              <li style="background-color:{{{color}}}" class="titlecolor"></li>&nbsp;
+                              <li class="blacktext">{{tracktitle}}</li>
+                            </ul>
+                          </p><br>
                         </div>
                       </div>
                     </div>

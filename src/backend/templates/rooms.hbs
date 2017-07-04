@@ -53,78 +53,94 @@
     <div id="session-list" class="container">
       <div class="row">
         <div style="margin: 15px 0 0 15px;" class="col-md-9">
-          <div style="margin-top:4%" id="track-list">
+          <div id="track-list">
             {{#roomsinfo}}
-            <div style="padding:0" class="row">
-              <div style="padding:0" class="col-md-12">
+            <div class="paddinzero row">
+              <div class="paddinzero col-md-12">
                 <a class="anchor" id="{{slug}}"></a>
-                <h5 class="text">{{date_ru}}</h4>
+                <h5 class="text">{{date_ru}}</h5>
               </div>
             </div>
             <div class="row">
               {{#sessions}}
               <div class="row">
                 <div style="clear:both" class="col-md-12">
-                {{#if venue }}
-                <h5 class="text">{{venue}}</h4>
-                {{/if}}
+                  {{#if venue }}
+                  <h5 class="text">{{venue}}</h5>
+                  {{/if}}
                 </div>
               </div>
               <div class="eventtime col-xs-2 col-sm-2 col-md-2">
                 <h4>{{start}}</h4>
               </div>
-              <div class="room-container"
-                data-toggle="collapse"
-                data-target="#desc-{{session_id}} .collapse"
-                aria-expanded="false"
-                aria-controls="desc-{{session_id}}">
+              <div class="room-container">
                 <div style="padding-right:0px;" class="left-border col-xs-10 col-sm-10 col-md-10">
-                  <h4 style="background-color:{{{color}}}"  class="sizeevent event">
-                    {{title}}
-                  </h4>
-                  <div id="desc-{{session_id}}">
-                    <p class="collapse">
+                  <div id="title-{{session_id}}" class="sizeevent event" style="background-color:{{{color}}}"
+                    data-toggle="collapse" data-target="#desc-{{session_id}}, #desc2-{{session_id}}">
+                    <h4>
+                      {{title}}
+                    </h4>
+                    <div id="desc2-{{session_id}}" class="collapse in" style="background-color: {{{color}}}">
+                      <div class="row speaker-short-info">
+                        <h5>
+                        {{#speakers_list}}
+                          {{name}}{{#if @last}}{{else}},{{/if}}
+                        {{/speakers_list}}
+                        </h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="desc-{{session_id}}" class="collapse">
+                    {{#if language}}
+                    <p><i class="fa fa-language" aria-hidden="true"></i>&nbsp;{{{language}}}</p>
+                    {{/if}}
+                    {{#if roomname}}
+                    <p><i style="color:{{{roomcolor}}}" class="fa fa-flag" aria-hidden="true"></i>&nbsp;<i>{{roomname}}</i></p>
+                    {{/if}}
+                    <hr class="clear-both">
+                    {{#if description}}
+                    <p>
                       <span class="tip-description">{{{description}}}
                       </span>
                     </p>
-                  <hr style="clear:both" class="collapse">
-                    <div class="session-speakers-list collapse">
-                    {{#speakers_list}}
+                    <hr class="clear-both">
+                    {{else}}
+                    &nbsp;
+                    {{/if}}
+                    <div class="session-speakers-list" aria-expanded="false" aria-controls="desc-{{session_id}}">
+                      {{#speakers_list}}
                       <a href="speakers.html#{{id}}">
-                        <p class="session-speakers-less">
-                          <p style="margin-right:20px" class="session-speakers">
+                        <p>
+                          <p class="session-speakers">
                           {{#if thumb}}
-                            <img onError="this.onerror=null;this.src='dependencies/avatar.png';" class="card-img-top" src="{{thumb}}" style="width:10rem; height:10rem; border-radius:50%;"/>
+                            <img onError="this.onerror=null;this.src='dependencies/avatar.png';" class="card-img-top speaker-image-small" src="{{thumb}}"/>
                           {{else}}
-                            <img class="card-img-top" src="dependencies/avatar.png" style="width:10rem; height:10rem; border-radius:50%;"/>
+                            <img class="card-img-top speaker-image-small" src="dependencies/avatar.png"/>
                           {{/if}}
                           </p>
                           <span class="graytext">{{name}}</span>
                         </p>
                       </a>
                       {{#if organisation}}
-                      <p class="session-speakers-more">
+                      <p>
                         {{organisation}}
                       </p>
                       {{/if}}
                       {{#if short_biography}}
-                      <p class="session-speakers-more">
+                      <p>
                         <i>{{short_biography}}</i>
                       </p>
                       {{/if}}
                       {{!--
                       {{#if long_biography}}
-                      <p class="session-speakers-more">
+                      <p>
                         {{long_biography}}
                       </p>
                       {{/if}}
                       --}}
-                      <hr style="clear:both">
-                    {{/speakers_list}}
+                      <hr class="clear-both">
+                      {{/speakers_list}}
                       <div class="blacktext">
-                        {{#if roomname}}
-                        <p><i style="color:{{{roomcolor}}}" class="fa fa-flag" aria-hidden="true"></i>&nbsp;<i>{{roomname}}</i></p>
-                        {{/if}}
                         {{#if sessiondate}}
                         <p>{{sessiondate_ru}}, <span>{{start}} - {{end}}</span></p>
                         {{/if}}

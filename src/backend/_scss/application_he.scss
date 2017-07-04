@@ -49,6 +49,7 @@ a {
 .navbar-default {
   background-color: $navbar-color;
   border-color: $gray-extra-light;
+  border: none;
 
   .navbar-nav {
     li {
@@ -427,7 +428,7 @@ a {
 }
 
 #track-list {
-  margin-top:8%;
+  margin-top:4%;
   margin-bottom: 8%;
 }
 
@@ -447,89 +448,13 @@ a {
   min-height: 70px;
   border-right: 1px solid rgba(0,0,0,.10);
 }
-/* Pop over Track */
 
-.arrow {
-  position: absolute;
-  width: 25px;
-  height: 10px;
-  overflow: hidden;
-  right:10px;
-  z-index: 1000;
-  margin-top: -2.3%;
-
-  span {
-    display: block;
-    width: 14px;
-    height: 14px;
-    -webkit-transform: rotate(45deg) skew(-10deg, -10deg);
-    -moz-transform: rotate(45deg) skew(-10deg, -10deg);
-    -ms-transform: rotate(45deg) skew(-10deg, -10deg);
-    -o-transform: rotate(45deg) skew(-10deg, -10deg);
-    transform: rotate(45deg) skew(-10deg, -10deg);
-    zoom: 1;
-    margin: 1px 4px 0 0;
-    background: #efefef;
-    border-left: 1px solid #c1c1c1;
-    border-top: 1px solid #c1c1c1;
-    -webkit-box-shadow: inset 1px 1px 1px 0px rgba(255, 255, 255, 0.37);
-    -moz-box-shadow: inset 1px 1px 1px 0px rgba(255, 255, 255, 0.37);
-    box-shadow: inset 1px 1px 1px 0px rgba(255, 255, 255, 0.37);
-  }
+.main {
+  margin-top :2%;
+  padding-top:2%;
+  margin-bottom :1%;
+  background-color: $main-background;
 }
-
-.pop-box{
-  width:355px;
-  min-height:255px;
-  height: auto;
-  z-index:1000;
-  position:absolute;
-  border-radius:4px;
-  border: 1px solid #c1c1c1;
-  transition: all 0.5s ease;
-  background-color:white;
-    .pop {
-    background-color: #fff;
-      .pop-over {
-        padding:2%;
-        margin:10px;
-        word-wrap: break-word;
-        line-height: 20px;
-        font-weight: 400;
-        color: $gray-dark;
-      }
-      .pop-footer {
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        background: #fff;
-        padding:20px;
-        line-height: .80em;
-        color: $gray-dark;
-
-      }
-
-      .pop-header {
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        background: #efefef;
-        height: 35px;
-        padding: 5px 20px 0 5px;
-        border-bottom: 1px solid #ddd;
-      }
-
-    }
-
-  }
-
-  #headline {
-    padding:8px;
-  }
-  .main {
-    margin-top :2%;
-    padding-top:2%;
-    margin-bottom :1%;
-    background-color: $main-background;
-  }
 
 
 //Speakers Styling
@@ -584,35 +509,6 @@ a {
       }
   }
 }
-
-/*
-.filter-heading span{
-  position :relative;
-  color: $black;
-}
-.filter-heading span:after{
-  left:100%;
-  margin-left:0.5em;
-}
-.filter-heading span:after{
-  right:100%;
-  margin-right:0.5em;
-}
-.filter-heading span:after, .filter-heading span:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  height: 3px;
-  display: block;
-  width:349px;
-  margin-top: -2px;
-  border-top: 1px solid $gray-dark;
-  border-bottom: 1px solid $gray-dark;
-}
-.track-heading span:after,.track-heading span:before {
-  width:299px;
-}
-*/
 
 .track-heading {
   margin-top: 40px;
@@ -697,54 +593,6 @@ a {
   }
 }
 
-/*
-@media (max-width: 1202px) and (min-width: 760px){
-  .filter-heading span:after, .filter-heading span:before  {
-    width: 270px;
-  }
-}
-@media (max-width: 760px) and (min-width: 664px){
-  .filter-heading span:after, .filter-heading span:before  {
-    width: 223px;
-  }
-}
-@media (max-width: 664px) and (min-width: 620px){
-  .filter-heading span:after, .filter-heading span:before  {
-    width: 213px;
-  }
-}
-@media (max-width: 620px) and (min-width: 581px){
-  .filter-heading span:after, .filter-heading span:before  {
-    width: 188px;
-  }
-}
-@media (max-width: 581px) and (min-width: 550px){
-  .filter-heading span:after, .filter-heading span:before  {
-    width: 176px;
-  }
-}
-@media (max-width: 550px) and (min-width: 521px){
-  .filter-heading span:after, .filter-heading span:before  {
-    width: 156px;
-  }
-}
-@media (max-width: 550px) and (min-width: 521px){
-  .filter-heading span:after, .filter-heading span:before  {
-    width: 156px;
-  }
-}
-@media (max-width: 521px) and (min-width: 421px){
-  .filter-heading span:after, .filter-heading span:before  {
-    width: 134px;
-  }
-}
-@media (max-width: 421px) {
-  .filter-heading span:after, .filter-heading span:before  {
-    width: 116px;
-  }
-}
-
-*/
 @media (max-width: 767px) {
   .pop-box {
     width: 100%;
@@ -761,7 +609,7 @@ a {
 }
 
 .track-inline {
-  display: inline-block;
+  //display: inline-block;
   vertical-align: text-top;
 }
 
@@ -1284,11 +1132,12 @@ a {
 }
 
 .speaker-photo {
+  cursor: pointer;
+  display: block;
   margin-left: auto;
   margin-right: auto;
   height: 300px;
   width: 300px;
-  display: block;
 }
 
 .speaker-container {
@@ -1347,4 +1196,39 @@ a {
   .desktop {
     display: none;
   }
+}
+
+.speakers-list {
+  max-width: 50%;
+  float: left;
+  padding-right: 15px;
+
+  // On smaller screens, make width less between the picture and the description of speaker
+  @media only screen and (max-width: 400px) {
+    max-width: 35%;
+  }
+}
+
+.speaker-short-info {
+  width: auto;
+  overflow: hidden;
+  padding-right: 15px;
+}
+
+.speaker-image-small {
+  width:10rem;
+  height:10rem;
+  border-radius:50%;
+}
+
+.session-speakers {
+  margin-left: 20px;
+}
+
+.paddingzero {
+  padding: 0;
+}
+
+.clear-both {
+  clear: both;
 }
