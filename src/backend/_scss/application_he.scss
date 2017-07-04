@@ -415,19 +415,7 @@ a {
   }
 }
 
-.date-list {
-  line-height: 40px;
-}
-
-.date-pill {
-  border: thin solid;
-  border-radius: 4px;
-  margin: 10px;
-  padding: 6px;
-  white-space: nowrap;
-}
-
-#track-list {
+.track-list {
   margin-top:4%;
   margin-bottom: 8%;
 }
@@ -1231,4 +1219,81 @@ a {
 
 .clear-both {
   clear: both;
+}
+
+
+/* Date selection tabs */
+
+.date-list {
+  line-height: 40px;
+}
+
+.tabs {
+  margin-top: 10px;
+  line-height: 20px;
+  padding: 0;
+}
+
+.tabs-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+}
+
+.tabs-nav-link {
+  background-color: $gray;
+  color: $white;
+  flex: 1;
+  margin-left: 4px;
+  padding: 10px;
+  text-align: center;
+  transition: color 0.3s;
+
+  &:last-child {
+    margin-left: 0;
+  }
+
+  &:hover {
+    color: $border-venue;
+  }
+
+  &.is-active {
+    background-color: $gray-extra-light;
+    color: $dark-black;
+  }
+
+  i,
+  span {
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+  }
+
+  i {
+    font-size: 18px;
+  }
+
+  span {
+    display: none;
+    font-size: 18px;
+  }
+}
+
+@media all and (min-width: 720px) {
+  .tabs-nav-link {
+    i {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    span {
+      display: block;
+    }
+  }
+
+  .date-list {
+    max-width: 50%;
+  }
 }

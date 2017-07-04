@@ -44,16 +44,20 @@
       </div>
     </div>
 
-    <p class="date-list">
-    {{#timeList}}
-      <span class="date-pill"><a href="./rooms_he.html#{{slug}}"> {{date_short_he}} </a></span>
-    {{/timeList}}
-    </p>
+    <div class="date-list container">
+      <div class="tabs">
+        <span class="tabs-nav">
+          {{#timeList}}
+          <a class="tabs-nav-link" href="./rooms_he.html#{{slug}}"> {{date_short_he}} </a>
+          {{/timeList}}
+        </span>
+      </div>
+    </div>
 
     <div id="session-list" class="container">
       <div class="row">
         <div style="margin: 15px 0 0 15px;" class="col-md-9 col-rtl">
-          <div id="track-list">
+          <div class="track-list">
             {{#roomsinfo}}
             <div class="paddinzero row">
               <div class="paddinzero col-md-12">

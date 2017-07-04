@@ -151,8 +151,8 @@ function foldByTime(sessions, speakers, trackInfo) {
         date: moment.utc(session.start_time).local().format('dddd, D MMM'),
         date_ru: moment.utc(session.start_time).local().locale("ru").format('dddd, D MMMM'),
         date_he: moment.utc(session.start_time).local().locale("he").format('dddd, D MMMM'),
-        date_short_ru: moment.utc(session.start_time).local().locale("ru").format('dddd DD/MM'),
-        date_short_he: moment.utc(session.start_time).local().locale("he").format('dddd DD/MM'),
+        date_short_ru: moment.utc(session.start_time).local().locale("ru").format('dddd'),
+        date_short_he: moment.utc(session.start_time).local().locale("he").format('dddd'),
         times: new Map()
       })
     }

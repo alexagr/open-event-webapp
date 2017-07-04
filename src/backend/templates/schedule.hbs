@@ -44,15 +44,19 @@
       </div>
     </div>
 
-    <p class="date-list">
-    {{#timeList}}
-      <span class="date-pill"><a href="./schedule.html#{{slug}}"> {{date_short_ru}} </a></span>
-    {{/timeList}}
-    </p>
+    <div class="date-list container">
+      <div class="tabs">
+        <span class="tabs-nav">
+          {{#timeList}}
+          <a class="tabs-nav-link" href="./schedule.html#{{slug}}"> {{date_short_ru}} </a>
+          {{/timeList}}
+        </span>
+      </div>
+    </div>
 
     <div class="row">
       <div style="margin: 15px 0 0 15px;" class="col-md-9">
-        <div id=track-list class="container">
+        <div class="track-list container">
 
           {{#timeList}}
             <div style="padding:0" class="col-md-12">
