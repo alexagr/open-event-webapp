@@ -49,123 +49,34 @@
       </div>
     </div>
 
-  <div class="eventpage container" style="background-color: white;">
-    {{#if eventurls.register}}
-    <div class="listing-panel row">
-        <div class="col-md-12">
-         <div class="row">
-           <div class="col-md-4">
-           </div>
-           <div style="padding-right:30px" class="col-md-8">
-             <a id="ticket-button" style="display: block ; position: relative ; top: -87px ; visibility: hidden; "></a>
-             <a href="{{{eventurls.register}}}" class="pull-right btn btn-lg btn-primary" role="button">Tickets</a>
-           </div>
-         </div>
-        </div>
-    </div>
-    {{/if}}
-    <a id="description"></a>
-    <div class ="container">
-      {{#if eventurls.description_he}}
-       <div class="row">
-          <div class="eventdes col-md-12"><p style="padding:1px;">{{{eventurls.description_he}}}</p></div>
-        </div>
-      {{/if}}
-    </div>
-    {{#if eventurls.featuresection}}
-    <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <section class="speakers duplicatable-content">
-          <div style="padding:0px;" class="container">
-            <div class="row">
-              <div class="col-sm-12 text-center">
-                  <h1 class="section-header">Featured Speakers</h1>
-              </div>
-            </div>
-          </div>
-            <div class="row" style="margin-top: 50px">
-              {{#speakerslist}}{{#if featured}}
-
-              <div class="col-md-6 col-sm-12">
-               <div class="speaker-with-bio">
-                <div class="speaker">
-                  <div class="image-holder">
-                    <img  onError="this.onerror=null;this.src='./dependencies/avatar.png';" class="background-image" alt="{{{name}}}" src="{{{photo}}}">
-                    <div class="responsive-overlay">
-                      <div class="hover-state text-center preserve3d">
-                        <div class="social-links vertical-align">
-                        {{#if website}}
-                        <a href="{{website}}" target="default"><i class="icon fa fa-home"></i></a>
-                        {{/if }}
-                        {{#if twitter}}
-                         <a href="{{twitter}}"><i class="icon fa fa-twitter"></i></a>
-                         {{/if}}
-                         {{#if facebook}}
-                         <a href ="{{facebook}}"><i class="icon fa fa-facebook"></i></a>
-                         {{/if}}
-                         {{#if linkedin}}
-                         <a href ="{{linkedin}}"><i class="icon fa fa-linkedin"></i></a>
-                          {{/if}}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="speaker-description">
-                  <h2 style="margin-right:20px;">{{name}}</h2>
-                  <span class="sub" style="margin-right:20px;">{{organisation}}</span>
-                  <p style="margin-right:20px;">
-                  {{{long_biography}}}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-           {{/if}} {{/speakerslist}}
-            </div>
-      </section>
-      <!--<div style="height:400px;overflow-x:hidden;overflow-y:overlay;" class= "twitter col-md-2">
-       <a class="twitter-timeline" href="{{{eventurls.twitterLink}}}"></a>
-      </div>-->
-    </div>
-  </div>
-  </div>
-  {{/if}}
   <div class ="container">
     <div class="row">
-      <div class="mobile">
-        <hr style="clear:both">
-        <img src="dependencies/tip.jpg"/>
-        <div class="eventdes col-md-12">
-          <p>על מנת לראות תוכנית הפסטיבל לחצו על הכפתור  <img src="dependencies/iconbar.png"/> בפינה הימנית העליונה ובחרו אופציה <b>תוכנית</b>.
-          לחצו על שם היחידה על מנת לראות מידע נוסך אודותיה. לחצו על שם המרצה על מנת לראות קורות חייו.
-          </p>
-          <p>אם אתם מחפשים הרצאות מתקיימות בחדר ספציפי, בחרו אופציה <b>חדרים</b> בתפריט.
-          אם אתם מחפשים הרצאה של מרצה ספציפי, בחרו אופציה <b>מרצים</b> בתפריט.
-          </p>
-          <p>על מנת לפשט שימוש בתוכנית הפסטיבל צרו קיצור דרך אליה במסך דף הבית כדלקמן:
-           <ul>
-           <li>אם אתם משתמשים באנדרויד (Chrome) לחצו על הכפתור <b>תפרית</b> (Menu) <img src="dependencies/menu.png"/> בפינה הימנית העליונה ובחרו <b>הוסף למסך דף הבית</b> (Add to Home Screen)</li>
-           <li>אם אתם משתמשים באייפון (Safari) לחצו על כפתור <b>שליחה</b> (Send) <img src="dependencies/send.png"/> למטה במרכז ובחרו <b>הוסף למסך דף הבית</b> (Add to Home Screen)</li>
-           </ul>
-           <br />
-          </p>
-        </div>
+      <div class="eventdes col-md-12 mobile">
+        <p>ברוכים הבאים לפסטיבל {{eventurls.name_he}}!</p>
+        <p>על מנת לראות תוכנית הפסטיבל לחצו על הכפתור  <img src="dependencies/iconbar.png"/> בפינה הימנית העליונה ובחרו אופציה <b>תוכנית</b>.
+        לחצו על שם היחידה על מנת לראות מידע נוסך אודותיה. לחצו על שם המרצה על מנת לראות קורות חייו.
+        </p>
+        <p>אם אתם מחפשים הרצאות מתקיימות בחדר ספציפי, בחרו אופציה <b>חדרים</b> בתפריט.
+        אם אתם מחפשים הרצאה של מרצה ספציפי, בחרו אופציה <b>מרצים</b> בתפריט.
+        </p>
+        <p>על מנת לפשט שימוש בתוכנית הפסטיבל צרו קיצור דרך אליה במסך דף הבית כדלקמן:
+         <ul>
+         <li>אם אתם משתמשים באנדרויד (Chrome) לחצו על הכפתור <b>תפרית</b> (Menu) <img src="dependencies/menu.png"/> בפינה הימנית העליונה ובחרו <b>הוסף למסך דף הבית</b> (Add to Home Screen)</li>
+         <li>אם אתם משתמשים באייפון (Safari) לחצו על כפתור <b>שליחה</b> (Send) <img src="dependencies/send.png"/> למטה במרכז ובחרו <b>הוסף למסך דף הבית</b> (Add to Home Screen)</li>
+         </ul>
+         <br />
+        </p>
       </div>
-      <div class="desktop">
-        <hr style="clear:both">
-        <img src="dependencies/tip.jpg"/>
-        <div class="eventdes col-md-12">
-          <p>על מנת לראות תוכנית הפסטיבל בחרו אופציה <b>תוכנית</b> בתפריט העליון.
-          לחצו על שם היחידה על מנת לראות מידע נוסך אודותיה. לחצו על שם המרצה על מנת לראות קורות חייו.
-          </p>
-          <p>אם אתם מחפשים הרצאות מתקיימות בחדר ספציפי, בחרו אופציה <b>חדרים</b> בתפריט.
-          אם אתם מחפשים הרצאה של מרצה ספציפי, בחרו אופציה <b>מרצים</b> בתפריט.
-          </p>
-          <p>שימו לב שתוכנית הפסטיבל ניתן לראות גם בטלפונים סלולריים.
-          </p>
-        </div>
+      <div class="eventdes col-md-12 desktop">
+        <p>ברוכים הבאים לפסטיבל {{eventurls.name_he}}!</p>
+        <p>על מנת לראות תוכנית הפסטיבל בחרו אופציה <b>תוכנית</b> בתפריט העליון.
+        לחצו על שם היחידה על מנת לראות מידע נוסך אודותיה. לחצו על שם המרצה על מנת לראות קורות חייו.
+        </p>
+        <p>אם אתם מחפשים הרצאות מתקיימות בחדר ספציפי, בחרו אופציה <b>חדרים</b> בתפריט.
+        אם אתם מחפשים הרצאה של מרצה ספציפי, בחרו אופציה <b>מרצים</b> בתפריט.
+        </p>
+        <p>שימו לב שתוכנית הפסטיבל ניתן לראות גם בטלפונים סלולריים.
+        </p>
       </div>
     </div>
   </div>

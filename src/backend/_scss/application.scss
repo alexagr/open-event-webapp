@@ -49,7 +49,7 @@ a {
 .navbar-default {
   background-color: $navbar-color;
   border-color: $gray-extra-light;
-  border: none;
+  //border: none;
 
   .navbar-nav {
     li {
@@ -599,7 +599,7 @@ a {
 //event page
 
 .carousel, .carousel .item {
-  height: 500px;
+  height: 450px;
 
   &-caption {
     z-index: 10;
@@ -622,7 +622,6 @@ a {
   .carousel-caption h1 {
     font-size: 50px;
   }
-
 }
 
 .eventpage {

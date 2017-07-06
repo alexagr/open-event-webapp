@@ -49,83 +49,14 @@
       </div>
     </div>
 
-  <div class="eventpage container" style="background-color: white;">
-    <a id="description"></a>
-    <div class ="container">
-      {{#if eventurls.description}}
-       <div class="row">
-          <div class="eventdes col-md-12"><p style="padding:1px;">{{{eventurls.description}}}</p></div>
-        </div>
-      {{/if}}
-    </div>
-    {{#if eventurls.featuresection}}
-    <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <section class="speakers duplicatable-content">
-          <div style="padding:0px;" class="container">
-            <div class="row">
-              <div class="col-sm-12 text-center">
-                  <h1 class="section-header">Featured Speakers</h1>
-              </div>
-            </div>
-          </div>
-            <div class="row" style="margin-top: 50px">
-              {{#speakerslist}}{{#if featured}}
-
-              <div class="col-md-6 col-sm-12">
-               <div class="speaker-with-bio">
-                <div class="speaker">
-                  <div class="image-holder">
-                    <img  onError="this.onerror=null;this.src='./dependencies/avatar.png';" class="background-image" alt="{{{name}}}" src="{{{photo}}}">
-                    <div class="responsive-overlay">
-                      <div class="hover-state text-center preserve3d">
-                        <div class="social-links vertical-align">
-                        {{#if website}}
-                        <a href="{{website}}" target="default"><i class="icon fa fa-home"></i></a>
-                        {{/if }}
-                        {{#if twitter}}
-                         <a href="{{twitter}}"><i class="icon fa fa-twitter"></i></a>
-                         {{/if}}
-                         {{#if facebook}}
-                         <a href ="{{facebook}}"><i class="icon fa fa-facebook"></i></a>
-                         {{/if}}
-                         {{#if linkedin}}
-                         <a href ="{{linkedin}}"><i class="icon fa fa-linkedin"></i></a>
-                          {{/if}}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="speaker-description">
-                  <h2 style="margin-right:20px;">{{name}}</h2>
-                  <span class="sub" style="margin-right:20px;">{{organisation}}</span>
-                  <p style="margin-right:20px;">
-                  {{{long_biography}}}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-           {{/if}} {{/speakerslist}}
-            </div>
-        </section>
-      </div>
-    </div>
-    </div>
-  {{/if}}
-
     <div class ="container">
       <div class="row">
-        <div class="mobile">
-        <hr style="clear:both">
-        <img src="dependencies/tip.jpg"/>
-        <div class="eventdes col-md-12">
+        <div class="eventdes col-md-12 mobile">
+          <p>Добро пожаловать на {{eventurls.name}}!</p>
           <p>Для просмотра программы фестиваля, нажмите на кнопку <img src="dependencies/iconbar.png"/> в правом верхнем углу и
           выберите опцию <b>&laquo;ПРОГРАММА&raquo;</b>.
-          Нажмите на названии сессии, чтобы увидеть дополнительную информацию о ней. Нажмите на
-          фотографии презентера, чтобы увидеть его краткую биографию.
+          Нажмите на название сессии, чтобы увидеть дополнительную информацию о ней. Нажмите на
+          фотографию презентера, чтобы увидеть его краткую биографию.
           </p>
           <p>Если вы ищете лекции, проходящие в определенной комнате, выберите опцию <b>&laquo;КОМНАТЫ&raquo;</b>.
           Если вы ищете лекцию конкретного презентера, выберите опцию <b>&laquo;ПРЕЗЕНТЕРЫ&raquo;</b>.
@@ -139,21 +70,17 @@
              <br />
           </p>
         </div>
-        </div>
-        <div class="desktop">
-        <hr style="clear:both">
-        <img src="dependencies/tip.jpg"/>
-        <div class="eventdes col-md-12">
+        <div class="eventdes col-md-12 desktop">
+          <p>Добро пожаловать на {{eventurls.name}}!</p>
           <p>Для просмотра программы фестиваля, выберите опцию <b>&laquo;ПРОГРАММА&raquo;</b> в меню наверху.
-          Нажмите на названии сессии, чтобы увидеть дополнительную информацию о ней. Нажмите на
-          фотографии презентера, чтобы увидеть его краткую биографию.
+          Нажмите на название сессии, чтобы увидеть дополнительную информацию о ней. Нажмите на
+          фотографию презентера, чтобы увидеть его краткую биографию.
           </p>
           <p>Если вы ищете лекции, проходящие в определенной комнате, выберите опцию <b>&laquo;КОМНАТЫ&raquo;</b>.
           Если вы ищете лекцию конкретного презентера, выберите опцию <b>&laquo;ПРЕЗЕНТЕРЫ&raquo;</b>.
           </p>
           <p>Обратите внимание, что программой фестиваля можно пользоваться и с мобильного телефона.
           </p>
-        </div>
         </div>
       </div>
     </div>

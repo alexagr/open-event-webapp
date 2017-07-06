@@ -47,12 +47,8 @@
   {{#speakerslist_he}}
     <div class="speaker-inline col-xs-12 col-sm-6 col-md-4 col-rtl">
       <a class="anchor" id="{{speaker_id}}"></a>
-      <div class="speaker-container"
-        data-toggle="collapse"
-        data-target="#desc-{{speaker_id}} .collapse"
-        aria-expanded="false"
-        aria-controls="desc-{{speaker_id}}">
-        <p class="speaker-image">
+      <div class="speaker-container">
+        <p class="speaker-image" data-toggle="collapse" data-target="#desc-{{speaker_id}}">
         {{#if photo}}
         <img onError="this.onerror=null;this.src='dependencies/avatar.png';"  class="speaker-photo" alt="{{{name_he}}}" src="{{{photo}}}"/>
         {{else}}
@@ -60,9 +56,7 @@
         {{/if}}
         </p>
         <p class="speaker-name">{{{name_he}}}</p>
-        <div id="desc-{{speaker_id}}">
-          <div class=" collapse">
-          <hr class="speaker-hr">
+        <div id="desc-{{speaker_id}}" class="collapse">
           {{#if short_biography_he}}
           <p class="speaker-bio">
             <i>{{{short_biography_he}}}</i>
@@ -72,8 +66,8 @@
           <p class="speaker-bio">
             {{{long_biography_he}}}
           </p>
-          <hr class="speaker-hr">
           {{/if}}
+          <hr class="speaker-hr">
           <div class="speaker-container">
             <h4 class="speaker-title" class="text"><strong>יחידות</strong></h4>
             <div class="row">
@@ -94,7 +88,6 @@
                 {{/each}}
               </div>
             </div>
-          </div>
           </div>
         </div>
       </div>
