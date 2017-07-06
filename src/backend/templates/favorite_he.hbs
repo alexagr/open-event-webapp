@@ -31,14 +31,14 @@
 
 <body dir="rtl">
   <a id="top"></a>
-  {{> navbar_he otherpage='schedule'}}
+  {{> navbar_he otherpage='favorite'}}
 
   <div class="main container" id="session-list">
     <div class="row">
       <div class="middle col-sm-12">
         <h2 class="filter-heading track-heading text-center">
         <span>
-          תוכנית
+          סימניות
         </span>
         </h2>
       </div>
@@ -48,7 +48,7 @@
       <div class="tabs">
         <span class="tabs-nav">
           {{#timeList}}
-          <a class="tabs-nav-link" href="./schedule_he.html#{{slug}}"> {{date_short_he}} </a>
+          <a class="tabs-nav-link" href="./favorite_he.html#{{slug}}"> {{date_short_he}} </a>
           {{/timeList}}
         </span>
       </div>
@@ -65,13 +65,13 @@
             </div>
             {{#times}}
 
-            <div class="row">
+            <div class="row time-filter">
               <div class="eventtime col-xs-2 col-sm-2 col-md-2 col-rtl">
                 <h4>{{caption}}</h4>
               </div>
               <div class="tracks col-xs-10 col-sm-10 col-md-10 col-rtl">
                 {{#sessions}}
-                <div class="track-inline">
+                <div id="track-{{session_id}}" class="track-inline">
                   <a class="anchor" id="{{session_id}}"></a>
                   <div style="padding-right:0px;" class="schedule-container">
                     <div id="title-{{session_id}}" class="sizeevent event" style="background-color:{{{color}}}"
@@ -79,9 +79,6 @@
                       <h4>
                         {{title_he}}
                       </h4>
-                      <a id="bookmark-{{session_id}}" class="bookmark">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                      </a>
                       <div id="desc2-{{session_id}}" class="collapse in" style="background-color: {{{color}}}">
                         <div class="row speaker-short-info">
                           <h5>
@@ -183,32 +180,25 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
-      $('.bookmark').click(function(e){
-        var temp = JSON.parse(localStorage["{{eventurls.name}}"]);
-        var id = Number($(this).attr('id').substring(9));
-        var curColor = $(this).css("color");
-        if (curColor == "rgb(255, 255, 0)") {
-          $(this).css("color", "");
-          temp[id] = 0;
-        }
-        else {
-          $(this).css("color", "rgb(255, 255, 0)");
-          temp[id] = 1;
-        }
-        localStorage["{{eventurls.name}}"] = JSON.stringify(temp);
-
-        e.stopPropagation();
-      });
-
       function initPage() {
         if(localStorage.hasOwnProperty("{{eventurls.name}}") === false) {
           localStorage["{{eventurls.name}}"] = '{}';
         }
 
         var temp = JSON.parse(localStorage["{{eventurls.name}}"]);
-        Object.keys(temp).forEach(function(key) {
-          if (temp[key] == 1) {
-            $('#bookmark-' + key).css("color", "rgb(255, 255, 0)");
+
+        $('.time-filter').each(function() {
+          var timeFlag = 0;
+          $(this).find('.track-inline').each(function(){
+            var id = Number($(this).attr('id').substring(6));
+            if (temp[id] == 1) {
+              timeFlag = 1;
+            } else {
+              $(this).hide();
+            }
+          });
+          if (!timeFlag) {
+            $(this).hide();
           }
         });
       }

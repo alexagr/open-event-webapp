@@ -32,12 +32,14 @@ const roomstpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/room
 const speakerstpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/speakers.hbs').toString('utf-8'));
 const eventtpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/event.hbs').toString('utf-8'));
 const maptpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/map.hbs').toString('utf-8'));
+const favoritetpl = handlebars.compile(fs.readFileSync(__dirname + '/templates/favorite.hbs').toString('utf-8'));
 
 const scheduleTpl_he = handlebars.compile(fs.readFileSync(__dirname + '/templates/schedule_he.hbs').toString('utf-8'));
 const roomstpl_he = handlebars.compile(fs.readFileSync(__dirname + '/templates/rooms_he.hbs').toString('utf-8'));
 const speakerstpl_he = handlebars.compile(fs.readFileSync(__dirname + '/templates/speakers_he.hbs').toString('utf-8'));
 const eventtpl_he = handlebars.compile(fs.readFileSync(__dirname + '/templates/event_he.hbs').toString('utf-8'));
 const maptpl_he = handlebars.compile(fs.readFileSync(__dirname + '/templates/map_he.hbs').toString('utf-8'));
+const favoritetpl_he = handlebars.compile(fs.readFileSync(__dirname + '/templates/favorite_he.hbs').toString('utf-8'));
 
 if(!String.linkify) {
   String.prototype.linkify = function() {
@@ -230,12 +232,14 @@ exports.createDistDir = function(req, socket, callback) {
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/speakers.html', speakerstpl(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/index.html', eventtpl(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/map.html', maptpl(jsonData));
+          fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/favorite.html', favoritetpl(jsonData));
 
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/schedule_he.html', scheduleTpl_he(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/rooms_he.html', roomstpl_he(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/speakers_he.html', speakerstpl_he(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/index_he.html', eventtpl_he(jsonData));
           fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/map_he.html', maptpl_he(jsonData));
+          fs.writeFileSync(distHelper.distPath + '/' + appFolder + '/favorite_he.html', favoritetpl_he(jsonData));
       } catch (err)
       {
           console.log(err);

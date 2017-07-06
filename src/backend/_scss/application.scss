@@ -1286,3 +1286,15 @@ a {
     max-width: 50%;
   }
 }
+
+.bookmark {
+  cursor: pointer;
+  padding: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  i {
+    margin-left: 5px;
+  }
+}

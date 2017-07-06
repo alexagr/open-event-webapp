@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="ru">
 <head>
 
   <meta charset="utf-8">
@@ -7,10 +7,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-  <meta name="description" content="{{ apptitle_he }}">
+  <meta name="description" content="{{ apptitle }}">
   <meta name="author" content="{{ metaauthor }}">
 
-  <title>{{ apptitle_he }}</title>
+  <title>{{ apptitle }}</title>
 
   <!-- Bootstrap core CSS -->
   <!-- Latest compiled and minified CSS -->
@@ -18,7 +18,7 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="./dependencies/font-awesome.min.css">
   <link rel="stylesheet" href="./dependencies/bootstrap.min.css">
-  <link rel="stylesheet" href="./css/schedule_he.css">
+  <link rel="stylesheet" href="./css/schedule.css">
 
   {{> analytics}}
 
@@ -29,16 +29,16 @@
       <![endif]-->
 </head>
 
-<body dir="rtl">
+<body>
   <a id="top"></a>
-  {{> navbar_he otherpage='schedule'}}
+  {{> navbar otherpage='favorite_he'}}
 
   <div class="main container" id="session-list">
     <div class="row">
       <div class="middle col-sm-12">
         <h2 class="filter-heading track-heading text-center">
         <span>
-          תוכנית
+          Закладки
         </span>
         </h2>
       </div>
@@ -48,70 +48,68 @@
       <div class="tabs">
         <span class="tabs-nav">
           {{#timeList}}
-          <a class="tabs-nav-link" href="./schedule_he.html#{{slug}}"> {{date_short_he}} </a>
+          <a class="tabs-nav-link" href="./favorite.html#{{slug}}"> {{date_short_ru}} </a>
           {{/timeList}}
         </span>
       </div>
     </div>
 
     <div class="row">
-      <div style="margin: 15px 0 0 15px;" class="col-md-9 col-rtl">
+      <div style="margin: 15px 0 0 15px;" class="col-md-9">
         <div class="track-list container">
 
           {{#timeList}}
             <div style="padding:0" class="col-md-12">
               <a class="anchor" id="{{slug}}"></a>
-              <h4 class="text">{{date_he}}</h4>
+              <h4 class="text">{{date_ru}}</h4>
             </div>
             {{#times}}
 
-            <div class="row">
-              <div class="eventtime col-xs-2 col-sm-2 col-md-2 col-rtl">
+            <div class="row time-filter">
+              <div class="eventtime col-xs-2 col-sm-2 col-md-2">
                 <h4>{{caption}}</h4>
               </div>
-              <div class="tracks col-xs-10 col-sm-10 col-md-10 col-rtl">
+
+              <div class="tracks col-xs-10 col-sm-10 col-md-10">
                 {{#sessions}}
-                <div class="track-inline">
+                <div id="track-{{session_id}}" class="track-inline">
                   <a class="anchor" id="{{session_id}}"></a>
                   <div style="padding-right:0px;" class="schedule-container">
                     <div id="title-{{session_id}}" class="sizeevent event" style="background-color:{{{color}}}"
                       data-toggle="collapse" data-target="#desc-{{session_id}}, #desc2-{{session_id}}">
                       <h4>
-                        {{title_he}}
+                        {{title}}
                       </h4>
-                      <a id="bookmark-{{session_id}}" class="bookmark">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                      </a>
                       <div id="desc2-{{session_id}}" class="collapse in" style="background-color: {{{color}}}">
                         <div class="row speaker-short-info">
                           <h5>
                           {{#speakers_list}}
-                            {{name_he}}{{#if @last}}{{else}},{{/if}}
+                            {{name}}{{#if @last}}{{else}},{{/if}}
                           {{/speakers_list}}
                           </h5>
                         </div>
                       </div>
                     </div>
                     <div id="desc-{{session_id}}" class="collapse">
-                      {{#if language_he}}
-                      <p><i class="fa fa-language" aria-hidden="true"></i>&nbsp;{{{language_he}}}</p>
+                      {{#if language}}
+                      <p><i class="fa fa-language" aria-hidden="true"></i>&nbsp;{{{language}}}</p>
                       {{/if}}
-                      {{#if location_he}}
-                      <p><i style="color:{{{location_color}}}" class="fa fa-flag" aria-hidden="true"></i>&nbsp;<i>{{location_he}}</i></p>
+                      {{#if location}}
+                      <p><i style="color:{{{location_color}}}" class="fa fa-flag" aria-hidden="true"></i>&nbsp;<i>{{location}}</i></p>
                       {{/if}}
                       <hr class="clear-both">
-                      {{#if description_he}}
+                      {{#if description}}
                       <p>
                         <span class="tip-description">
-                          {{{description_he}}}
+                          {{{description}}}
                         </span>
                       </p>
                       <hr class="clear-both">
                       {{/if}}
                       <div class="session-speakers-list">
                         {{#each speakers_list}}
-                        <a href="speakers_he.html#{{id}}">
-                          <p class="session-speakers-less">
+                        <a href="speakers.html#{{id}}">
+                          <p>
                             <p class="session-speakers">
                             {{#if thumb}}
                               <img onError="this.onerror=null;this.src='dependencies/avatar.png';" class="card-img-top speaker-image-small" src="{{{thumb}}}"/>
@@ -119,34 +117,34 @@
                               <img class="card-img-top speaker-image-small" src="dependencies/avatar.png"/>
                             {{/if}}
                             </p>
-                            <span class="graytext ">{{name_he}}</span>
+                            <span class="graytext ">{{name}}</span>
                           </p>
                         </a>
-                        {{#if organisation_he}}
+                        {{#if organisation}}
                         <p>
-                          {{organisation_he}}
+                          {{organisation}}
                         </p>
                         {{/if}}
-                        {{#if short_biography_he}}
+                        {{#if short_biography}}
                         <p>
-                          <i>{{short_biography_he}}</i>
+                          <i>{{short_biography}}</i>
                         </p>
                         {{/if}}
                         {{!--
-                        {{#if long_biography_he}}
+                        {{#if long_biography}}
                         <p>
-                          {{long_biography_he}}
+                          {{long_biography}}
                         </p>
                         {{/if}}
                         --}}
                         <hr class="clear-both">
                         {{/each}}
                         <div class="blacktext">
-                          <p>{{sessiondate_he}}, <span>{{start}} - {{end}}</span></p>
+                          <p>{{sessiondate_ru}}, <span>{{start}} - {{end}}</span></p>
                           <p>
                             <ul class="title-inline">
                               <li style="background-color:{{{color}}}" class="titlecolor"></li>&nbsp;
-                              <li class="blacktext">{{tracktitle_he}}</li>
+                              <li class="blacktext">{{tracktitle}}</li>
                             </ul>
                           </p><br>
                         </div>
@@ -164,10 +162,10 @@
       </div>
       <div class="track-names">
       {{#tracknames}}
-      {{#if title_he}}
+      {{#if title}}
         <ul class="title-inline title-legend">
           <li  style="background-color:{{{color}}}" class="titlecolor"></li>
-          <li>{{title_he}}</li>
+          <li>{{title}}</li>
         </ul>
       {{/if}}
       {{/tracknames}}
@@ -175,7 +173,7 @@
     </div>
   </div>
 
-  {{> footer_he}}
+  {{> footer}}
   <script src="./dependencies/jquery.min.js"></script>
   <script src="./dependencies/bootstrap.min.js" type="text/javascript"></script>
   <script src="./js/navbar.js" type="text/javascript"></script>
@@ -183,32 +181,25 @@
 
   <script type="text/javascript">
     $(document).ready(function() {
-      $('.bookmark').click(function(e){
-        var temp = JSON.parse(localStorage["{{eventurls.name}}"]);
-        var id = Number($(this).attr('id').substring(9));
-        var curColor = $(this).css("color");
-        if (curColor == "rgb(255, 255, 0)") {
-          $(this).css("color", "");
-          temp[id] = 0;
-        }
-        else {
-          $(this).css("color", "rgb(255, 255, 0)");
-          temp[id] = 1;
-        }
-        localStorage["{{eventurls.name}}"] = JSON.stringify(temp);
-
-        e.stopPropagation();
-      });
-
       function initPage() {
         if(localStorage.hasOwnProperty("{{eventurls.name}}") === false) {
           localStorage["{{eventurls.name}}"] = '{}';
         }
 
         var temp = JSON.parse(localStorage["{{eventurls.name}}"]);
-        Object.keys(temp).forEach(function(key) {
-          if (temp[key] == 1) {
-            $('#bookmark-' + key).css("color", "rgb(255, 255, 0)");
+
+        $('.time-filter').each(function() {
+          var timeFlag = 0;
+          $(this).find('.track-inline').each(function(){
+            var id = Number($(this).attr('id').substring(6));
+            if (temp[id] == 1) {
+              timeFlag = 1;
+            } else {
+              $(this).hide();
+            }
+          });
+          if (!timeFlag) {
+            $(this).hide();
           }
         });
       }

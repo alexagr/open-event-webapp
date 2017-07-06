@@ -80,6 +80,9 @@
                       <h4>
                         {{title}}
                       </h4>
+                      <a id="bookmark-{{session_id}}" class="bookmark">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                      </a>
                       <div id="desc2-{{session_id}}" class="collapse in" style="background-color: {{{color}}}">
                         <div class="row speaker-short-info">
                           <h5>
@@ -178,5 +181,41 @@
   <script src="./dependencies/bootstrap.min.js" type="text/javascript"></script>
   <script src="./js/navbar.js" type="text/javascript"></script>
   <script src="./js/scroll.js" type="text/javascript"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.bookmark').click(function(e){
+        var temp = JSON.parse(localStorage["{{eventurls.name}}"]);
+        var id = Number($(this).attr('id').substring(9));
+        var curColor = $(this).css("color");
+        if (curColor == "rgb(255, 255, 0)") {
+          $(this).css("color", "");
+          temp[id] = 0;
+        }
+        else {
+          $(this).css("color", "rgb(255, 255, 0)");
+          temp[id] = 1;
+        }
+        localStorage["{{eventurls.name}}"] = JSON.stringify(temp);
+
+        e.stopPropagation();
+      });
+
+      function initPage() {
+        if(localStorage.hasOwnProperty("{{eventurls.name}}") === false) {
+          localStorage["{{eventurls.name}}"] = '{}';
+        }
+
+        var temp = JSON.parse(localStorage["{{eventurls.name}}"]);
+        Object.keys(temp).forEach(function(key) {
+          if (temp[key] == 1) {
+            $('#bookmark-' + key).css("color", "rgb(255, 255, 0)");
+          }
+        });
+      }
+      initPage();
+    });
+  </script>
+
 </body>
 </html>

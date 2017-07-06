@@ -19,6 +19,9 @@ $(function() {
     else if(findMatch(linkUrl, "map.html")){
         $("#maplink").addClass('active');
     }
+    else if(findMatch(linkUrl, "favorite.html")){
+        $("#favoritelink").addClass('active');
+    }
     else if(findMatch(linkUrl, "rooms_he.html")){
         $("#roomshelink").addClass('active');
     }
@@ -30,6 +33,9 @@ $(function() {
     }
     else if(findMatch(linkUrl, "map_he.html")){
         $("#maphelink").addClass('active');
+    }
+    else if(findMatch(linkUrl, "favorite_he.html")){
+        $("#favoritehelink").addClass('active');
     }
     else {
         $("#homelink").addClass('active');
