@@ -3,16 +3,6 @@
   <footer class="classic" style="background-color:#f5f5f5;">
     <div class="container">
       <div class="row ui-sortable">
-        <div  style="margin-bottom: 14px;" class="col-sm-2 col-md-2 col-xs-12">
-          <ul class="menu">
-            <li><a target="_self" href="index.html#description">About</a></li>
-            <li><a target="_self" href="schedule.html">Schedule</a></li>
-            <li><a target="_self" href="rooms.html">Rooms</a></li>
-            <li><a target="_self" href="speakers.html">Speakers</a></li>
-            <li><a target="_self" href="map.html">Map</a></li>
-            <li><a class="inner-link back-to-top" href="#top">Back To Top</a></li>
-          </ul>
-        </div>
         <div  style="margin-bottom: 14px;" class="col-sm-7 col-md-7 col-xs-12">
          {{#if copyright}}
          {{#if copyright.licence}}
@@ -20,13 +10,14 @@
          <a href="{{{copyright.licence_url}}}"> <img src="{{{copyright.logo}}}"> </a>
          &copy; {{copyright.year}}
          <a href="{{{copyright.holder_url}}}">{{copyright.holder}}</a>
+         <br />
          The website and it's contents are licensed under
           <a href="{{{copyright.licence_url}}}"> {{copyright.licence}} </a>
          </p>
          {{/if}}
         {{/if}}
         </div>
-    <div  class="contact-details col-sm-3 col-md-3 col-xs-12">
+    <div  class="contact-details col-sm-5 col-md-5 col-xs-12">
       <ul class="contact-methods">
        {{#if eventurls.email}}
         <li>
