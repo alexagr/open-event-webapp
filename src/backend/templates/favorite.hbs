@@ -188,7 +188,7 @@
         var temp = JSON.parse(localStorage["{{eventurls.name}}"]);
         var id = Number($(this).attr('id').substring(9));
         var curColor = $(this).css("color");
-        $(this).css("color", "");
+        $(this).css("color", "rgb(127, 127, 127)");
         if (curColor == "rgb(255, 255, 0)") {
           temp[id] = 0;
         }
