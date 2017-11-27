@@ -35,9 +35,18 @@
         <li class="navlink" align="right"><a id="maphelink" href="map_he.html">מפה</a></li>
       </ul>
       </nav>
-    {{#if trackFlag}}
-      {{> tracklist}}
-    {{/if}}
+
+      <div class="navbar-track-list">
+        <hr />
+        {{#tracknames}}
+          {{#if title}}
+          <div class="navbar-track-info">
+            <span style="background-color: {{color}};" class="titlecolor"></span>
+            <span class="track-name">{{title_he}}</li>
+          </div>
+          {{/if}}
+        {{/tracknames}}
+      </div>
     </div>
   </div>
 </header>
