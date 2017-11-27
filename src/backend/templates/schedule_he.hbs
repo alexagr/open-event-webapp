@@ -82,7 +82,7 @@
                       <a id="bookmark-{{session_id}}" class="bookmark">
                         <i class="fa fa-star" aria-hidden="true"></i>
                       </a>
-                      <div id="desc2-{{session_id}}" class="collapse in" style="background-color: {{{color}}}">
+                      <div id="desc2-{{session_id}}" class="collapse in">
                         <div class="row speaker-short-info">
                           <h5>
                           {{#speakers_list}}
@@ -93,12 +93,10 @@
                       </div>
                     </div>
                     <div id="desc-{{session_id}}" class="collapse">
-                      {{#if language_he}}
-                      <p><i class="fa fa-language" aria-hidden="true"></i>&nbsp;{{{language_he}}}</p>
-                      {{/if}}
                       {{#if location_he}}
                       <p><i style="color:{{{location_color}}}" class="fa fa-flag" aria-hidden="true"></i>&nbsp;<i>{{location_he}}</i></p>
                       {{/if}}
+                      <p><i class="fa fa-language" aria-hidden="true"></i>&nbsp;{{tracktitle_he}} {{#if language_he}}({{{language_he}}}){{/if}}</p>
                       <hr class="clear-both">
                       {{#if description_he}}
                       <p>
@@ -111,16 +109,14 @@
                       <div class="session-speakers-list">
                         {{#each speakers_list}}
                         <a href="speakers_he.html#{{id}}">
-                          <p class="session-speakers-less">
-                            <p class="session-speakers">
-                            {{#if thumb}}
-                              <img onError="this.onerror=null;this.src='dependencies/avatar.png';" class="card-img-top speaker-image-small" src="{{{thumb}}}"/>
-                            {{else}}
-                              <img class="card-img-top speaker-image-small" src="dependencies/avatar.png"/>
-                            {{/if}}
-                            </p>
-                            <span class="graytext ">{{name_he}}</span>
+                          <p class="session-speakers">
+                          {{#if thumb}}
+                            <img onError="this.onerror=null;this.src='dependencies/avatar.png';" class="card-img-top speaker-image-small" src="{{{thumb}}}"/>
+                          {{else}}
+                            <img class="card-img-top speaker-image-small" src="dependencies/avatar.png"/>
+                          {{/if}}
                           </p>
+                          <span class="graytext ">{{name_he}}</span>
                         </a>
                         {{#if organisation_he}}
                         <p>
@@ -142,13 +138,7 @@
                         <hr class="clear-both">
                         {{/each}}
                         <div class="blacktext">
-                          <p>{{sessiondate_he}}, <span>{{start}} - {{end}}</span></p>
-                          <p>
-                            <ul class="title-inline">
-                              <li style="background-color:{{{color}}}" class="titlecolor"></li>&nbsp;
-                              <li class="blacktext">{{tracktitle_he}}</li>
-                            </ul>
-                          </p><br>
+                          <p>{{sessiondate_he}}, <span>{{start}} - {{end}}</span></p><br />
                         </div>
                       </div>
                     </div>
