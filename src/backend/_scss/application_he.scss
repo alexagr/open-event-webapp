@@ -49,7 +49,6 @@ a {
 .navbar-default {
   background-color: $navbar-color;
   border-color: $gray-extra-light;
-  //border: none;
 
   .navbar-nav {
     li {
@@ -67,24 +66,25 @@ a {
 
 .navlink {
   font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
   font-weight: 600;
+  letter-spacing: 1px;
   position: relative;
+  text-transform: uppercase;
   top: 2px;
-   a {
+  a {
     padding-bottom: 14px;
     &:hover {
       text-decoration: none;
       border-bottom: 3px solid $gray-dark;
     }
-   }
-
+  }
 }
 
 .navbar-toggle {
   padding: 6px 10px;
   color: $gray-dark;
+  margin-left: 2em; 
+  margin-top: 1em;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
@@ -555,7 +555,6 @@ a {
       display:inline-block;
       max-width: 188.6px;
       word-wrap: break-word;
-      vertical-align: top;
     }
   }
 
@@ -1306,5 +1305,22 @@ a {
 
   i {
     margin-right: 5px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .side-collapse {
+    background-color: $white;
+    bottom: 0;
+    opacity: .9;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 50px;
+    transition: width .4s;
+    width: 16em;
+  }
+  .side-collapse.in {
+    width: 0;
   }
 }
