@@ -234,12 +234,7 @@
         
           {{#times}}
             {{#sessions}}
-        $("#track-{{session_id}}").data("title", "{{title}}");
-        $("#track-{{session_id}}").data("description", "{{description}}");
-        $("#track-{{session_id}}").data("location", "{{location}}");
-        $("#track-{{session_id}}").data("date", date);
-        $("#track-{{session_id}}").data("start", "{{start}}");
-        $("#track-{{session_id}}").data("end", "{{end}}");
+        $("#track-{{session_id}}").data("meta", {location: "{{location}}", date: date, start: "{{start}}", end: "{{end}}"});
             {{/sessions}}
             
           {{/times}}
@@ -254,8 +249,10 @@
         function removeColonFromTime(time) {
           return time.replace(/:/g, '');
         }
-        function removeHtmlQuotes(name) {
-          return name.replace(/&quot;/g, '"');
+        function convertHtmlToText(name) {
+          name = name.replace(/&quot;/g, '"');
+          name = name.replace(/\s+/g, ' ');
+          return name;
         }
         function uuidv4() {
           return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
@@ -266,11 +263,15 @@
         $('.track-inline').each(function() {
           if ($(this).is(":visible")) {
               var sessObj = {};
-              sessObj.begin = removeDashFromDate($(this).data("date")) + 'T' + removeColonFromTime($(this).data("start")) + '00';
-              sessObj.stop = removeDashFromDate($(this).data("date")) + 'T' + removeColonFromTime($(this).data("end")) + '00';
-              sessObj.subject = removeHtmlQuotes($(this).data("title"));
-              sessObj.description = removeHtmlQuotes($(this).data("description"));
-              sessObj.location = $(this).data("location");
+              sessObj.begin = removeDashFromDate($(this).data("meta").date) + 'T' + removeColonFromTime($(this).data("meta").start) + '00';
+              sessObj.stop = removeDashFromDate($(this).data("meta").date) + 'T' + removeColonFromTime($(this).data("meta").end) + '00';
+              $(this).find('.event').each(function(){
+                sessObj.subject = convertHtmlToText($(this).find('h4').text());
+              });
+              $(this).find('.speaker-short-info').each(function(){
+                sessObj.description = convertHtmlToText($(this).find('h5').text());
+              });
+              sessObj.location = $(this).data("meta").location;
               sessObj.uid = uuidv4();
               cal.addEvent(sessObj);
           }
