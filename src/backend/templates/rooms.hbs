@@ -82,7 +82,11 @@
                   <div id="title-{{session_id}}" class="sizeevent event" style="background-color:{{{color}}}"
                     data-toggle="collapse" data-target="#desc-{{session_id}}, #desc2-{{session_id}}">
                     <h4>
+                      {{#if is_cancelled}}
+                      <del>{{title}}</del>
+                      {{else}}                       
                       {{title}}
+                      {{/if}}                       
                     </h4>
                     <a id="bookmark-{{session_id}}" class="bookmark">
                       <i class="fa fa-star" aria-hidden="true"></i>

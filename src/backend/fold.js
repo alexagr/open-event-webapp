@@ -164,6 +164,7 @@ function foldByTime(sessions, speakers, trackInfo) {
         sessions: []
       })
     }
+    const is_cancelled = (roomName == 'Отмена') ? true : false;
     timeMap.get(time).sessions.push({
       start: moment.utc(session.start_time).local().format('HH:mm'),
       end : moment.utc(session.end_time).local().format('HH:mm'),
@@ -175,6 +176,7 @@ function foldByTime(sessions, speakers, trackInfo) {
       location: roomName,
       location_he: roomName_he,
       location_color: roomColor,
+      is_cancelled: is_cancelled,
       speakers_list: session.speakers.map((speaker) =>  {
         let spkr = speakersMap.get(speaker.id);
         if(spkr.photo){
@@ -589,6 +591,7 @@ function foldByRooms(rooms, sessions, speakers, trackInfo) {
         sortKey = venue_sort + '1' + time;
     }
 
+    const is_cancelled = (roomName == 'Отмена') ? true : false;
     room.sessions.push({
       start: moment.utc(session.start_time).local().format('HH:mm'),
       color: returnTrackColor(trackDetails, (session.track == null) ? null : session.track.id),
@@ -618,7 +621,8 @@ function foldByRooms(rooms, sessions, speakers, trackInfo) {
       roomname: roomName,
       roomname_he: roomName_he,
       roomcolor: roomColor,
-      sortKey: sortKey
+      sortKey: sortKey,
+      is_cancelled: is_cancelled
     });
   });
 
