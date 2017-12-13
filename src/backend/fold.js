@@ -83,6 +83,7 @@ function foldByTrack(sessions, speakers, trackInfo, reqOpts) {
       return;
     }
 
+      const is_cancelled = (roomName == 'Отмена') ? true : false;
       track.sessions.push({
       start: moment.utc(session.start_time).local().format('HH:mm'),
       end : moment.utc(session.end_time).local().format('HH:mm'),
@@ -103,8 +104,8 @@ function foldByTrack(sessions, speakers, trackInfo, reqOpts) {
       sign_up: session.signup_url,
       video: session.video,
       slides: session.slides,
-      audio: session.audio
-
+      audio: session.audio,
+      is_cancelled: is_cancelled
     });
 
 
@@ -750,6 +751,7 @@ sessiondetail.forEach((session) => {
   const roomname = (session.detail == null) ?' ': session.detail.microlocation.name;
   const roomname_he = (session.detail == null) ?' ': session.detail.microlocation.name_he;
   const roomcolor = (session.detail == null) ?' ': session.detail.microlocation.color;
+  const is_cancelled = (roomname == 'Отмена') ? true : false;
   speakersession.push({
       start: moment.utc(session.detail.start_time).local().format('HH:mm'),
       end:   moment.utc(session.detail.end_time).local().format('HH:mm'),
@@ -762,7 +764,8 @@ sessiondetail.forEach((session) => {
       location: roomname,
       location_he: roomname_he,
       location_color: roomcolor,
-      session_id: session.detail.id
+      session_id: session.detail.id,
+      is_cancelled: is_cancelled
    });
 })
 

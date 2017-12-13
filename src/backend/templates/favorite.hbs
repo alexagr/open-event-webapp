@@ -80,6 +80,7 @@
 
               <div class="tracks col-xs-10 col-sm-10 col-md-10">
                 {{#sessions}}
+                {{#unless is_cancelled}}
                 <div id="track-{{session_id}}" class="track-inline">
                   <a class="anchor" id="{{session_id}}"></a>
                   <div style="padding-right:0px;" class="schedule-container">
@@ -157,6 +158,7 @@
                     </div>
                   </div>
                 </div>
+                {{/unless}}
                 {{/sessions}}
               </div>
             </div>
