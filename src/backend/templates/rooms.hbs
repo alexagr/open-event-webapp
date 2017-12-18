@@ -110,6 +110,9 @@
                     <p><i style="color:{{{roomcolor}}}" class="fa fa-flag" aria-hidden="true"></i>&nbsp;<i>{{roomname}}</i></p>
                     {{/if}}
                     <p><i class="fa fa-language" aria-hidden="true"></i>&nbsp;{{tracktitle}} {{#if language}}({{{language}}}){{/if}}</p>
+                    {{#if shabbat}}
+                    <p><i class="fa fa-microphone-slash" aria-hidden="true"></i>&nbsp;Шабатний формат</p>
+                    {{/if}}
                     <hr class="clear-both">
                     {{#if description}}
                     <p>
