@@ -29,7 +29,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="navlink"><a id="homelink" href="index.html">Начало</a>
         <li class="navlink"><a id="schedulelink" href="schedule.html">Программа</a></li>
-        <li class="navlink"><a id="roomslink" href="rooms.html">Комнаты</a></li>
+        <li class="navlink"><a id="roomslink" href="rooms.html">Залы</a></li>
         <li class="navlink"><a id="speakerslink" href="speakers.html">Презентеры</a></li>
         <li class="navlink"><a id="favoritelink" href="favorite.html">Закладки</a></li>
         <li class="navlink"><a id="maplink" href="map.html">Карта</a></li>
@@ -42,10 +42,14 @@
           {{#if title}}
           <div class="navbar-track-info">
             <span style="background-color: {{color}};" class="titlecolor"></span>
-            <span class="track-name">{{title}}</li>
+            <span class="track-name">{{title}}</span>
           </div>
           {{/if}}
         {{/tracknames}}
+          <div class="navbar-track-info">
+            <i class="fa fa-microphone-slash" aria-hidden="true"></i>
+            <span class="track-name">Шабатний формат</span>
+          </div>
       </div>
     </div>
   </div>

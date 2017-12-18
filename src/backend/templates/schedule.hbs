@@ -94,6 +94,9 @@
                           {{#speakers_list}}
                             {{name}}{{#if @last}}{{else}},{{/if}}
                           {{/speakers_list}}
+                          {{#if shabbat}}
+                          &nbsp;<i class="fa fa-microphone-slash" aria-hidden="true"></i>
+                          {{/if}}
                           </h5>
                         </div>
                       </div>
@@ -168,6 +171,10 @@
         </ul>
       {{/if}}
       {{/tracknames}}
+        <ul class="title-inline title-legend">
+          <li><i class="fa fa-microphone-slash" aria-hidden="true"></i></li>
+          <li>Шабатний формат</li>
+        </ul>
       </div>
     </div>
   </div>

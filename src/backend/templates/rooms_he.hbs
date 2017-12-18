@@ -38,7 +38,7 @@
       <div class="middle col-sm-12">
           <h2 class="filter-heading track-heading text-center">
             <span>
-              חדרים
+              אולמות
             </span>
           </h2>
       </div>
@@ -98,6 +98,9 @@
                         {{#speakers_list}}
                           {{name_he}}{{#if @last}}{{else}},{{/if}}
                         {{/speakers_list}}
+                        {{#if shabbat}}
+                        &nbsp;<i class="fa fa-microphone-slash" aria-hidden="true"></i>
+                        {{/if}}
                         </h5>
                       </div>
                     </div>
@@ -172,6 +175,10 @@
           </ul>
         {{/if}}
         {{/tracknames}}
+          <ul class="title-inline title-legend">
+            <li><i class="fa fa-microphone-slash" aria-hidden="true"></i></li>
+            <li>שומר שבת</li>
+          </ul>
         </div>
       </div>
     </div>
