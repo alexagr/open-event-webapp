@@ -283,7 +283,7 @@ function createSocialLinks(event) {
     link.show = true;
     switch(link.name.toLowerCase()) {
       case 'event main page':
-        link.icon = 'home';
+        link.icon = 'chrome';
         break;
       case 'twitter':
         link.icon = 'twitter';

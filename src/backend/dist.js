@@ -108,7 +108,7 @@ module.exports = {
      var zipEntries = zip.getEntries(); 
 
      zipEntries.forEach(function(zipEntry) {
-     
+      console.log(' - ' + zipEntry.entryName)
       switch(zipEntry.entryName){
         case 'images/':
         zip.extractEntryTo("images/", appPath ); 
@@ -136,7 +136,6 @@ module.exports = {
         break;
         default:
       }
-  
       
     });
     

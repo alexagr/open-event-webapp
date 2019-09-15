@@ -15,8 +15,7 @@
   <!-- Bootstrap core CSS -->
   <!-- Latest compiled and minified CSS -->
   <link rel="shortcut icon" href="{{ eventurls.ico_url }}" type="image/x-icon" />
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="./dependencies/font-awesome.min.css">
+  {{> fonts}}
   <link rel="stylesheet" href="./dependencies/bootstrap.min.css">
   <link rel="stylesheet" href="./css/schedule_he.css">
 
@@ -93,20 +92,35 @@
                           {{#speakers_list}}
                             {{name_he}}{{#if @last}}{{else}},{{/if}}
                           {{/speakers_list}}
-                          {{#if shabbat}}
-                          &nbsp;<i class="fa fa-microphone-slash" aria-hidden="true"></i>
-                          {{/if}}
                           </h5>
+                          <h6>
+                          {{#if language_he}}
+                          <i class="fa fa-globe" aria-hidden="true"></i>&nbsp;{{language_he}}
+                          {{/if}}
+                          {{#if location_he}}
+                          {{#if language_he}}&nbsp;&nbsp;&nbsp;{{/if}}<i class="fa fa-map-marker-alt" aria-hidden="true"></i>&nbsp;{{location_he}}
+                          {{/if}}
+                          {{#if shabbat}}
+                          &nbsp;&nbsp;&nbsp;<i class="fa fa-menorah" aria-hidden="true"></i>&nbsp;שומר שבת
+                          {{/if}}
+                          </h6>
                         </div>
                       </div>
                     </div>
                     <div id="desc-{{session_id}}" class="collapse">
-                      {{#if location_he}}
-                      <p><i style="color:{{{location_color}}}" class="fa fa-flag" aria-hidden="true"></i>&nbsp;<i>{{location_he}}</i></p>
+                      <p><i style="color:{{{color}}}" class="fa fa-circle" aria-hidden="true"></i>&nbsp;{{tracktitle_he}}</p>
+                      {{#if language_he}}
+                      <p><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;{{language_he}}</p>
                       {{/if}}
-                      <p><i class="fa fa-language" aria-hidden="true"></i>&nbsp;{{tracktitle_he}} {{#if language_he}}({{{language_he}}}){{/if}}</p>
+                      {{#if location_he}}
+                      {{#if location_color}}
+                      <p><i style="color:{{{location_color}}}" class="fa fa-map-marker-alt" aria-hidden="true"></i>&nbsp;<i>{{location_he}}</i></p>
+                      {{else}}
+                      <p><i class="fa fa-map-marker-alt" aria-hidden="true"></i>&nbsp;<i>{{location_he}}</i></p>
+                      {{/if}}
+                      {{/if}}
                       {{#if shabbat}}
-                      <p><i class="fa fa-microphone-slash" aria-hidden="true"></i>&nbsp;שומר שבת</p>
+                      <p><i class="fa fa-menorah" aria-hidden="true"></i>&nbsp;שומר שבת</p>
                       {{/if}}
                       <hr class="clear-both">
                       {{#if description_he}}
@@ -127,7 +141,7 @@
                             <img class="card-img-top speaker-image-small" src="dependencies/avatar.png"/>
                           {{/if}}
                           </p>
-                          <span class="graytext ">{{name_he}}</span>
+                          <p><span class="graytext ">{{name_he}}</span></p>
                         </a>
                         {{#if organisation_he}}
                         <p>
@@ -139,13 +153,11 @@
                           <i>{{short_biography_he}}</i>
                         </p>
                         {{/if}}
-                        {{!--
                         {{#if long_biography_he}}
                         <p>
                           {{long_biography_he}}
                         </p>
                         {{/if}}
-                        --}}
                         <hr class="clear-both">
                         {{/each}}
                         <div class="blacktext">
@@ -173,10 +185,6 @@
         </ul>
       {{/if}}
       {{/tracknames}}
-        <ul class="title-inline title-legend">
-          <li><i class="fa fa-microphone-slash" aria-hidden="true"></i></li>
-          <li>שומר שבת</li>
-        </ul>
       </div>
     </div>
   </div>
