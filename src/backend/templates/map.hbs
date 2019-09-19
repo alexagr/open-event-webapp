@@ -18,6 +18,8 @@
   {{> fonts}}
   <link rel="stylesheet" href="./dependencies/bootstrap.min.css">
   <link rel="stylesheet" href="./css/schedule.css">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./images/icon.png"/>
 
   {{> analytics}}
 
@@ -28,7 +30,7 @@
       <![endif]-->
 </head>
 
-<body>
+  <body>
     <a id="top"></a>
     {{> navbar otherpage='map_he'}}
 
@@ -49,9 +51,5 @@
 
     {{> footer}}
 
-    <script src="./dependencies/jquery.min.js"></script>
-    <script src="./dependencies/bootstrap.min.js" type="text/javascript"></script>
-    <script src="./js/navbar.js" type="text/javascript"></script>
-    <script src="./js/scroll.js" type="text/javascript"></script>
-</body>
+  </body>
 </html>

@@ -14,6 +14,8 @@ const distPath = __dirname + '/../../dist';
 const uploadsPath = __dirname + '/../../uploads';
 const mockPath = __dirname + '/../../mockjson';
 
+let filePath, fileData, hashString;
+
 const downloadFile = function(url, filePath) {
   const fileStream = fs.createWriteStream(filePath);
 
@@ -100,6 +102,31 @@ module.exports = {
   copyAssets: function(appFolder, err) {
     const appPath = distPath + '/' + appFolder;
     fs.copy((__dirname + '/assets'), appPath, {clobber: true}, err);
+  },
+  copyServiceWorker: function (appFolder, folderHash, done) {
+    const appPath = distPath + '/' + appFolder;
+    const pathOfFile = __dirname + '/assets/js/sw.js';
+    try {
+      fileData = fs.readFileSync(pathOfFile).toString().split('\n');
+      hashString = "'" + folderHash + "';";
+      fileData.unshift('var CACHE_NAME = ' + hashString);
+      fs.writeFileSync(appPath + '/sw.js', fileData.join('\n'));
+      return done(null);
+    } catch (err) {
+      return done(err);
+    }
+  },
+  copyManifestFile: function (appFolder, eventName, done) {
+    const appPath = distPath + '/' + appFolder;
+    filePath = __dirname + '/assets/dependencies/manifest.json';
+    try {
+      const dataOfFile = fs.readFileSync(filePath).toString().split('\n');
+      // dataOfFile.unshift('{\n "name": "' + eventName + '",\n "short_name": "' + eventName + '",');
+      fs.writeFileSync(appPath + '/manifest.json', dataOfFile.join('\n'));
+      return done(null);
+    } catch (err) {
+      return done(err);
+    }
   },
   copyUploads: function(appFolder) {
     const appPath = distPath + '/' + appFolder;

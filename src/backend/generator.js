@@ -8,6 +8,7 @@ const async = require('async');
 const archiver = require('archiver');
 const sass = require('node-sass');
 const jsonfile = require('jsonfile');
+const hasher = require('folder-hash');
 
 const distHelper = require(__dirname + '/dist.js');
 const fold = require(__dirname + '/fold.js');
@@ -248,23 +249,45 @@ exports.createDistDir = function(req, socket, callback) {
         done(null, 'write');
       });
     },
+
     (done) => {
-      console.log('=================================SENDING MAIL\n');
-      if (emit) socket.emit('live.process', {donePercent: 80, status: "Website is being generated"});
+      console.log('=================================COPYING SERVICE WORKER\n');
+      if (emit) socket.emit('live.process', {donePercent: 80, status: 'Copying Service Worker File'});
 
-      if (req.body.ftpdetails) {
-        setTimeout(()=>{
-          ftpDeployer.deploy(req.body.ftpdetails, appFolder, () => {
-            //Send call back to orga server
-          })
-        }, 30000);
-      }
+      hasher.hashElement(appFolder, distHelper.distPath, function(err, hashObj) {
+        if (err) {
+          console.log(err);
+          if (emit) return socket.emit('live.error' , {status : "Error in Copying service worker" });
+        }
+        distHelper.copyServiceWorker(appFolder, hashObj.hash, function(error) {
+          if (error) {
+            console.log(error);
+            if (emit) socket.emit('live.error', {status: "Error in Copying service worker"} );
+          }
+          return done(null, 'service');
+        });
+      });
+    },
 
-      // mailer.sendMail(req.body.email, fold.slugify(req.body.name), () => {
-        callback(appFolder);
-        done(null, 'write');
-      // });
+    (done) => {
+      console.log('=================================COPYING MANIFEST FILE\n');
+      if (emit) socket.emit('live.process', {donePercent: 85, status: 'Copying Manifest File'});
 
+      distHelper.copyManifestFile(appFolder, appFolder, function(err) {
+        if (err) {
+          console.log(err);
+          if (emit) return socket.emit('live.error' , {status : "Error in Copying manifest file" });
+        }
+        return done(null, 'manifest');
+      });
+    },
+
+    (done) => {
+      console.log('=================================DONE\n');
+      if (emit) socket.emit('live.process', {donePercent: 90, status: "Website is being generated"});
+
+      callback(appFolder);
+      done(null, 'write');
     }
   ]);
 };

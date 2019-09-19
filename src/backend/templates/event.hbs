@@ -18,6 +18,8 @@
   {{> fonts}}
   <link rel="stylesheet" href="./dependencies/bootstrap.min.css">
   <link rel="stylesheet" href="./css/schedule.css">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./images/icon.png"/>
 
   {{> analytics}}
 
@@ -120,19 +122,11 @@
     </div>
  {{/if}}
 
-{{> footer}}
-
-
-    <script src="./dependencies/jquery.min.js"></script>
-    <script src="./dependencies/bootstrap.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="./js/popover.js"></script>
-    <script src="./js/navbar.js" type="text/javascript"></script>
-    <script src="./js/scroll.js" type="text/javascript"></script>
-
-    <script>
-    $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-   });
-</script>
+  {{> footer}}
+  <script>
+    $(document).ready(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
 </body>
 </html>

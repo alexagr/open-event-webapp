@@ -1,0 +1,17 @@
+{
+  "name": "Limmud Jerusalem 2018",
+  "short_name": "Limmud Jerusalem 2018",
+  "icons": [
+    {
+      "src": "./images/icon.png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "index.html",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#fff",
+  "theme_color": "#fe9b00",
+  "description": "Limmud Jerusalem 2018"
+}
