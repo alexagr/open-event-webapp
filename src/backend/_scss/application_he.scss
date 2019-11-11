@@ -1336,3 +1336,40 @@ a {
   margin-top: 15px;
   width: fit-content;
 }
+
+/* Poster on main page */
+.poster {
+    margin-top: 55px;
+    position: relative;
+}
+
+.poster-caption {
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+}
+
+.poster-caption h1, .poster-caption h2, .poster-caption h3, .poster-caption h4, .poster-caption h5, .poster-caption h6 {
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .collage-caption h1 {
+    font-size: 50px;
+  }
+  .poster-img.desktop {
+    display: block;
+  }
+  .poster-img.mobile {
+    display: none;
+  }
+}
+    
+@media (max-width: 767px) {
+  .poster-img.desktop {
+    display: none;
+  }
+  .poster-img.mobile {
+    display: block;
+  }
+}    
