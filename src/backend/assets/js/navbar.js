@@ -16,6 +16,9 @@ $(function() {
     else if(findMatch(linkUrl, "sessions.html")){
         $("#sessionslink").addClass('active');
     }
+    else if(findMatch(linkUrl, "calendar.html")){
+        $("#calendarlink").addClass('active');
+    }
     else if(findMatch(linkUrl, "map.html")){
         $("#maplink").addClass('active');
     }
@@ -30,6 +33,9 @@ $(function() {
     }
     else if(findMatch(linkUrl, "speakers_he.html")){
         $("#speakershelink").addClass('active');
+    }
+    else if(findMatch(linkUrl, "calendar_he.html")){
+        $("#calendarhelink").addClass('active');
     }
     else if(findMatch(linkUrl, "map_he.html")){
         $("#maphelink").addClass('active');

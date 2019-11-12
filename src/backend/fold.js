@@ -4,6 +4,10 @@ const moment = require('moment');
 const distHelper = require('./dist');
 const urljoin = require('url-join');
 
+const timeToPixel = 50; // 15 mins = 50 pixels
+const columnWidth = 160;
+const calendarWidth = 1060;
+
 function byProperty(key) {
 
   return (a, b) => {
@@ -25,11 +29,89 @@ function slugify(str) {
   return str.replace(/[^\w]/g, '-').replace(/-+/g, '-').toLowerCase();
 }
 
+function replaceSpaceWithUnderscore(str) {
+  return str.replace(/ /g, '_');
+}
+
+function removeSpace(str) {
+  return str.replace(/ /g, '');
+}
+
 function returnTrackColor(trackInfo, id) {
   if ((trackInfo == null) || (id == null)) {
     return '#f8f8fa'
   }
   return trackInfo[id];
+}
+
+function getHoursFromTime(time) {
+  return time.split(':')[0];
+}
+
+function getMinutessFromTime(time) {
+  return time.split(':')[1];
+}
+
+function getTimeDifferenceOfDates(startTime, sessionTime) {
+  const firstDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), parseInt(getHoursFromTime(startTime), 10), parseInt(getMinutessFromTime(startTime), 10), 0);
+  const secondDate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), parseInt(getHoursFromTime(sessionTime), 10), parseInt(getMinutessFromTime(sessionTime), 10), 0);
+
+  return secondDate - firstDate;
+}
+
+function convertTimeToPixel(startTime, sessionTime) {
+  let timeDiff = getTimeDifferenceOfDates(startTime, sessionTime);
+
+  if (timeDiff < 0) {
+    timeDiff += 24 * 60 * 60 * 1000; 
+  }
+  let top = timeDiff * timeToPixel / (1000 * 60 * 15) + timeToPixel; // distance of session from top of the table
+
+  return top;
+}
+
+function createTimeLine(startTime, endTime) {
+  const timeLine = [];
+  let startHour = parseInt(getHoursFromTime(startTime), 10);
+  const startMinute = parseInt(getMinutessFromTime(startTime), 10);
+  const endHour = parseInt(getHoursFromTime(endTime), 10);
+  let i = startMinute;
+  let time = '';
+  let height = timeToPixel;
+
+  if (i % 15 !== 0) {
+    i = 0;
+  }
+
+  while (startHour <= endHour) {
+    time = startHour < 10 ? '0' + startHour : startHour;
+    time = time + ':' + (i === 0 ? '0' + i : i);
+    if (i % 30 != 0) {
+        time = '';
+    }
+    timeLine.push({
+      time: time
+    });
+
+    i = (i + 15) % 60;
+    height += timeToPixel;
+    if (i === 0) {
+      startHour++;
+    }
+  }
+  return {
+    timeline: timeLine,
+    height: height
+  };
+}
+
+function checkWidth(columns) {
+  if (columns * columnWidth > calendarWidth) {
+    return columnWidth + 'px';
+  }
+  const percentageWidth = 100 / columns;
+
+  return percentageWidth + '%';
 }
 
 function foldByTrack(sessions, speakers, trackInfo, reqOpts) {
@@ -549,7 +631,13 @@ function foldByRooms(rooms, sessions, speakers, trackInfo) {
     const slug = date ;
     const tracktitle = (session.track == null) ? " " : session.track.name;
     const tracktitle_he = (session.track == null) ? " " : session.track.name_he;
+    const start = moment.utc(session.start_time).local().format('HH:mm');
+    const end = moment.utc(session.end_time).local().format('HH:mm');
     let room = null;
+
+    if ((roomName == 'Отмена') || (roomName == 'Столовая')) {
+      return;
+    }
 
     // set up room if it does not exist
     if (!roomData.has(slug) && (session.microlocation != null)) {
@@ -559,6 +647,9 @@ function foldByRooms(rooms, sessions, speakers, trackInfo) {
         date_he: moment.utc(session.start_time).local().locale('he').format('dddd, D MMMM'),
         sortKey: moment.utc(session.start_time).local().format('YY-MM-DD'),
         slug: slug,
+        start_time: start,
+        end_time: end,
+        timeLine: [],
         sessions: []
       };
       roomData.set(slug,room);
@@ -589,11 +680,17 @@ function foldByRooms(rooms, sessions, speakers, trackInfo) {
 
     let time = moment.utc(session.start_time).local().format('HH:mm');
     let sortKey = venue_sort + '0' + time;
-    if (moment.utc(session.start_time).local().hours() == 0) {
+    if (moment.utc(session.start_time).local().hours() < 3) {
         sortKey = venue_sort + '1' + time;
     }
 
-    const is_cancelled = (roomName == 'Отмена') ? true : false;
+    if (room.start_time === slug || room.start_time > start) {
+      room.start_time = start;
+    }
+    if (room.end_time === slug || room.end_time < end) {
+      room.end_time = end;
+    }
+
     room.sessions.push({
       start: moment.utc(session.start_time).local().format('HH:mm'),
       color: returnTrackColor(trackDetails, (session.track == null) ? null : session.track.id),
@@ -624,8 +721,7 @@ function foldByRooms(rooms, sessions, speakers, trackInfo) {
       roomname: roomName,
       roomname_he: roomName_he,
       roomcolor: roomColor,
-      sortKey: sortKey,
-      is_cancelled: is_cancelled
+      sortKey: sortKey
     });
   });
 
@@ -636,17 +732,45 @@ function foldByRooms(rooms, sessions, speakers, trackInfo) {
   for (let i = 0; i < roomsDetailLength; i++) {
     // sort all sessions in each day by 'venue + date'
     roomsDetail[i].sessions.sort(byProperty('sortKey'));
+    roomsDetail[i].venue = [];
+    const startTime = roomsDetail[i].start_time;
+    const endTime = roomsDetail[i].end_time;
+    const timeinfo = createTimeLine(startTime, endTime);       
+    
+    roomsDetail[i].timeline = timeinfo.timeline;
+    roomsDetail[i].height = timeinfo.height;
+    roomsDetail[i].timeToPixel = timeToPixel;
 
     // remove venue names from all but the 1st session in each venue
     let sessionsLength = roomsDetail[i].sessions.length;
     let prevVenue = '';
+    let tempVenue = {};
+    
+    tempVenue.sessions = [];
     for (let j = 0; j < sessionsLength; j++) {
-      if (roomsDetail[i].sessions[j].venue == prevVenue) {
+      roomsDetail[i].sessions[j].top = convertTimeToPixel(startTime, roomsDetail[i].sessions[j].start);
+      roomsDetail[i].sessions[j].bottom = convertTimeToPixel(startTime, roomsDetail[i].sessions[j].end);
+      roomsDetail[i].sessions[j].height = roomsDetail[i].sessions[j].bottom - roomsDetail[i].sessions[j].top;
+
+      if (roomsDetail[i].sessions[j].venue === prevVenue) {
         roomsDetail[i].sessions[j].venue = '';
+        tempVenue.sessions.push(roomsDetail[i].sessions[j]);
       } else {
+        if (JSON.stringify(tempVenue) !== JSON.stringify({}) && prevVenue !== '') {
+          roomsDetail[i].venue.push(tempVenue);
+          tempVenue = {};
+          tempVenue.sessions = [];
+        }
+        tempVenue.venue = roomsDetail[i].sessions[j].venue;
+        tempVenue.venue_he = roomsDetail[i].sessions[j].venue_he;
+        tempVenue.slug = replaceSpaceWithUnderscore(tempVenue.venue);
+        tempVenue.sessions.push(roomsDetail[i].sessions[j]);
         prevVenue = roomsDetail[i].sessions[j].venue;
       }
     }
+    roomsDetail[i].venue.push(tempVenue);
+    roomsDetail[i].sessions = {};
+    roomsDetail[i].width = checkWidth(roomsDetail[i].venue.length);      
   }
 
   return roomsDetail;

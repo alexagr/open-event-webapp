@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <meta name="description" content="{{ apptitle }}">
+  <meta name="author" content="{{ metaauthor }}">
+
+  <title>{{ apptitle }}</title>
+
+  <!-- Bootstrap core CSS -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="shortcut icon" href="{{ eventurls.ico_url }}" type="image/x-icon" />
+  {{> fonts}}
+  <link rel="stylesheet" href="./dependencies/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/schedule.css">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./images/icon.png"/>
+
+  {{> analytics}}
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+</head>
+
+<body>
+  <a id="top"></a>
+  {{> navbar otherpage='calendar_he'}}
+
+  <div class="main container" id="session-list">
+    <div class="row">
+      <div class="middle col-sm-12">
+        <h2 class="filter-heading track-heading text-center">
+        <span>
+          Сетка
+        </span>
+        </h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 calendar-view">
+        <div id="track-list" class="container">
+        {{#roomsinfo}}
+            <div class="{{slug}} calendar">
+              <div class="col-md-12 paddingzero">
+                <a class="anchor" id="{{slug}}"></a>
+                <h5 class="text">{{date_ru}}</h5>
+              </div>
+              <div class="calendar-content">
+                <div class="times">
+                  <div class="time" style="height: {{{timeToPixel}}}px">
+                    &nbsp;
+                  </div>
+                  {{#timeline}}
+                  <div class="time" style="height: {{{../timeToPixel}}}px; line-height: {{{../timeToPixel}}}px">
+                    {{time}}
+                  </div>
+                  {{/timeline}}
+                </div>
+                <div class="rooms" style="height: {{{height}}}px;background-image: url('dependencies/timeline.png');background-repeat: repeat;">
+                  {{#venue}}
+                  <div class="room" style="width: {{{../width}}};">
+                    <div class="room-header" style="height: {{{../timeToPixel}}}px;">
+                      {{#if venue }}
+                        <span>{{venue}}</span>
+                      {{/if}}
+                    </div>
+                    <div>
+                      {{#sessions}}
+                      <div class="session" style="top:{{{top}}}px; height:{{{height}}}px;background-color:{{{color}}};">
+                        <div class="session-name">
+                          <a href="schedule.html#{{session_id}}">
+                            {{title}}
+                          </a>
+                          <span class="session-desc">
+                            <br><br>
+                        {{#speakers_list}}
+                            {{name}}{{#if @last}}{{else}},{{/if}}
+                        {{/speakers_list}}
+                            <br><br>
+                            {{start}} - {{end}}
+                        {{#if language}}
+                            <br>{{language}}
+                        {{/if}}
+                          </span>
+                        </div>
+                      </div>
+                      {{/sessions}}
+                    </div>
+                  </div>
+                  {{/venue}}
+                  <div class="calendar-footer"></div>
+                </div>
+              </div>
+            </div>
+          {{/roomsinfo}}
+        </div>
+      </div>
+      
+      <div class="track-names">
+      {{#tracknames}}
+      {{#if title}}
+        <ul class="title-inline title-legend">
+          <li  style="background-color:{{{color}}}" class="titlecolor"></li>
+          <li>{{title}}</li>
+        </ul>
+      {{/if}}
+      {{/tracknames}}
+      </div>
+    </div>
+  </div>
+
+  {{> footer}}
+
+</body>
+</html>
