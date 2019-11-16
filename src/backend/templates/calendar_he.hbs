@@ -45,12 +45,22 @@
       </div>
     </div>
 
+    <!--
     <div class="row">
-      <div class="col-md-12 calendar-view col-rtl">
+      <div class="button-list container pull-left">
+        <button class="btn btn-default export-pdf" type="button">
+          <i class="fa fa-download" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    -->
+
+    <div class="row">
+      <div class="col-md-12 calendar-view">
         <div id="track-list" class="container">
         {{#roomsinfo}}
             <div class="{{slug}} calendar">
-              <div class="col-md-12 paddingzero col-rtl">
+              <div class="col-md-12 paddingzero">
                 <a class="anchor" id="{{slug}}"></a>
                 <h5 class="text">{{date_he}}</h5>
               </div>
@@ -118,7 +128,85 @@
     </div>
   </div>
 
+  <div class="modal fade" id="pdfModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog vertical-align-center">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Generating PDF</h3>
+        </div>
+        <div class="modal-body">
+          <p>Please wait patiently - this may take a few minutes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   {{> footer}}
+
+  <script src="./dependencies/async.min.js" type="text/javascript"></script>
+  <script src="./dependencies/jspdf.min.js" type="text/javascript"></script>
+  <script src="./js/html2canvas.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".export-pdf").click(function() {
+        $('#pdfModal').modal('show');
+        let pdf = new jsPDF('l', 'pt', 'a4');
+        let options = {
+          pagesplit: true
+        };
+        let count = 0;
+        let maxWidth = 0;
+        let initialWidth = [];
+        let $timeline;
+        let numberOfChildElements;
+        let widthOfChild;
+        let canvasWidth;
+        $('.calendar').each(function() {
+          let $timeline = $(this);
+          name = $timeline.attr('class');
+          initialWidth[count] = $timeline.width();
+          numberOfChildElements = $timeline.find('.rooms')[0].childElementCount - 1;
+          widthOfChild = $timeline.find('.room').width();
+          canvasWidth = numberOfChildElements * widthOfChild + 50;
+          $timeline.width(canvasWidth);
+          if(canvasWidth > maxWidth){
+            maxWidth = canvasWidth;
+          }
+          count++;
+        });
+        $timeline = $('.calendar').parent();
+        let mapValue = $timeline.children();
+        let scheduleDate = $timeline.attr('class').match(/(\d{4}-\d{2}-\d{2})/g);
+        if (scheduleDate) {
+          scheduleDate=scheduleDate[0];
+        } else {
+          scheduleDate ="Schedule";
+        }
+        let schedArr = $.map(mapValue, function(value, index) {
+          return [value];
+        });
+        let currDate = 0;
+        count = 0;
+        async.eachSeries(schedArr, function (child, callback) {
+          html2canvas(child, {
+            onrendered: function (canvas) {
+              pdf.addPage(canvas.width, canvas.height);
+              child.style.width = initialWidth[count] + 'px';
+              pdf.addImage(canvas, 'png', 0, 0, canvas.width, canvas.height);
+              currDate++;
+              if(currDate === schedArr.length){
+                pdf.deletePage(1);
+                $('#pdfModal').modal('hide');
+                pdf.save('limmudfsu-schedule-he.pdf');
+              }
+              count++;
+              callback();
+            }
+          });
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>
