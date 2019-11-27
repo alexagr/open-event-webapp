@@ -99,7 +99,17 @@
   </div>
   </div>
 </div>
-    {{> footer}}
+
+  {{> footer}}
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      let hash = window.location.hash.substr(1);
+      if (hash) {
+          $("#desc-" + hash).collapse('toggle');
+      }
+    });
+  </script>
 
 </body>
 </html>

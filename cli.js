@@ -11,7 +11,7 @@ client.on('connect', function () {
     if (i == 1) {
         i = 0;
         var data = {
-            name: 'limmud2018',
+            name: 'limmud2019',
             theme: 'light',
             datasource: 'jsonupload',
             assetmode: 'download',

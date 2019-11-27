@@ -89,6 +89,8 @@ function createTimeLine(startTime, endTime) {
     if (i % 30 != 0) {
         time = '';
     }
+    time = time.replace('24:', '00:');
+    time = time.replace('25:', '01:');
     timeLine.push({
       time: time
     });
@@ -631,11 +633,15 @@ function foldByRooms(rooms, sessions, speakers, trackInfo) {
     const slug = date ;
     const tracktitle = (session.track == null) ? " " : session.track.name;
     const tracktitle_he = (session.track == null) ? " " : session.track.name_he;
-    const start = moment.utc(session.start_time).local().format('HH:mm');
-    const end = moment.utc(session.end_time).local().format('HH:mm');
+    let start = moment.utc(session.start_time).local().format('HH:mm');
+    start = start.replace('00:', '24:');
+    start = start.replace('01:', '25:');
+    let end = moment.utc(session.end_time).local().format('HH:mm');
+    end = end.replace('00:', '24:');
+    end = end.replace('01:', '25:');
     let room = null;
 
-    if ((roomName == 'Отмена') || (roomName == 'Столовая')) {
+    if ((roomName == 'Отмена') || (roomName == 'Столовая') || (roomName == 'Экскурсия')) {
       return;
     }
 
@@ -833,7 +839,9 @@ function foldBySpeakers(speakers ,sessions, tracksData, reqOpts) {
       short_biography_he: speaker.short_biography_he ,
       mobile: speaker.mobile,
       name: speaker.name,
+      name2: speaker.name2,
       name_he: speaker.name_he,
+      name2_he: speaker.name2_he,
       photo : speaker.photo,
       thumb : thumb,
       organisation: speaker.organisation,
