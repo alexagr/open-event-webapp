@@ -273,6 +273,7 @@ function foldByTime(sessions, speakers, trackInfo) {
       description: session.long_abstract,
       description_he: session.long_abstract_he,
       shabbat: session.shabbat,
+      recommend: session.recommend,
       language: session.language,
       language_he: session.language_he,
       session_id: session.id,
@@ -641,7 +642,7 @@ function foldByRooms(rooms, sessions, speakers, trackInfo) {
     end = end.replace('01:', '25:');
     let room = null;
 
-    if ((roomName == 'Отмена') || (roomName == 'Столовая') || (roomName == 'Экскурсия')) {
+    if ((roomName == 'Отмена') /*|| (roomName == 'Столовая') || (roomName == 'Экскурсия')*/) {
       return;
     }
 
@@ -708,6 +709,7 @@ function foldByRooms(rooms, sessions, speakers, trackInfo) {
       description: session.long_abstract,
       description_he: session.long_abstract_he,
       shabbat: session.shabbat,
+      recommend: session.recommend,
       language: session.language,
       language_he: session.language_he,
       session_id: session.id,

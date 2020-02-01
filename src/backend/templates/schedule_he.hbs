@@ -105,6 +105,9 @@
                           {{#if shabbat}}
                           &nbsp;&nbsp;&nbsp;<i class="fa fa-menorah" aria-hidden="true"></i>&nbsp;שומר שבת
                           {{/if}}
+                          {{#if recommend}}
+                          &nbsp;&nbsp;&nbsp;<i class="fa fa-book-reader" aria-hidden="true"></i>
+                          {{/if}}
                           </h6>
                         </div>
                       </div>
@@ -124,6 +127,10 @@
                       {{#if shabbat}}
                       <p><i class="fa fa-menorah" aria-hidden="true"></i>&nbsp;שומר שבת</p>
                       {{/if}}
+                      {{#if recommend}}
+                      <p><i class="fa fa-book-reader" aria-hidden="true"></i>&nbsp;&quot;בבל&quot; ממליץ</p>
+                      {{/if}}
+                      <p><i class="fa fa-clock" aria-hidden="true"></i>&nbsp;{{sessiondate_he}}, <span>{{start}} - {{end}}</span></p>
                       <hr class="clear-both">
                       {{#if description_he}}
                       <p>
@@ -152,19 +159,16 @@
                         {{/if}}
                         {{#if short_biography_he}}
                         <p>
-                          <i>{{short_biography_he}}</i>
+                          <i>{{{short_biography_he}}}</i>
                         </p>
                         {{/if}}
                         {{#if long_biography_he}}
                         <p>
-                          {{long_biography_he}}
+                          {{{long_biography_he}}}
                         </p>
                         {{/if}}
                         <hr class="clear-both">
                         {{/each}}
-                        <div class="blacktext">
-                          <p>{{sessiondate_he}}, <span>{{start}} - {{end}}</span></p><br />
-                        </div>
                       </div>
                     </div>
                   </div>

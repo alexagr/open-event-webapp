@@ -1,6 +1,6 @@
 {
-  "name": "Limmud Jerusalem 2018",
-  "short_name": "Limmud Jerusalem 2018",
+  "name": "Limmud Ashdod 2019",
+  "short_name": "Limmud Ashdod 2019",
   "icons": [
     {
       "src": "./images/icon.png",
@@ -13,5 +13,5 @@
   "orientation": "portrait-primary",
   "background_color": "#fff",
   "theme_color": "#fe9b00",
-  "description": "Limmud Jerusalem 2018"
+  "description": "Limmud Ashdod 2019"
 }

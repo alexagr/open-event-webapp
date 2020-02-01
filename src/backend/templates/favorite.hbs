@@ -97,21 +97,49 @@
                       <a id="bookmark-{{session_id}}" class="bookmark">
                         <i class="fa fa-star" aria-hidden="true"></i>
                       </a>
-                      <div id="desc2-{{session_id}}" class="collapse in" style="background-color: {{{color}}}">
+                      <div id="desc2-{{session_id}}" class="collapse in">
                         <div class="row speaker-short-info">
                           <h5>
                           {{#speakers_list}}
                             {{name}}{{#if @last}}{{else}},{{/if}}
                           {{/speakers_list}}
                           </h5>
+                          <h6>
+                          {{#if language}}
+                          <i class="fa fa-globe" aria-hidden="true"></i>&nbsp;{{language}}
+                          {{/if}}
+                          {{#if location}}
+                          {{#if language}}&nbsp;&nbsp;&nbsp;{{/if}}<i class="fa fa-map-marker-alt" aria-hidden="true"></i>&nbsp;{{location}}
+                          {{/if}}
+                          {{#if shabbat}}
+                          &nbsp;&nbsp;&nbsp;<i class="fa fa-menorah" aria-hidden="true"></i>&nbsp;шаббат
+                          {{/if}}
+                          {{#if recommend}}
+                          &nbsp;&nbsp;&nbsp;<i class="fa fa-book-reader" aria-hidden="true"></i>
+                          {{/if}}
+                          </h6>
                         </div>
                       </div>
                     </div>
                     <div id="desc-{{session_id}}" class="collapse">
-                      {{#if location}}
-                      <p><i style="color:{{{location_color}}}" class="fa fa-flag" aria-hidden="true"></i>&nbsp;<i>{{location}}</i></p>
+                      <p><i style="color:{{{color}}}" class="fa fa-circle" aria-hidden="true"></i>&nbsp;{{tracktitle}}</p>
+                      {{#if language}}
+                      <p><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;{{language}}</p>
                       {{/if}}
-                      <p><i class="fa fa-language" aria-hidden="true"></i>&nbsp;{{tracktitle}} {{#if language}}({{{language}}}){{/if}}</p>
+                      {{#if location}}
+                      {{#if location_color}}
+                      <p><i style="color:{{{location_color}}}" class="fa fa-map-marker-alt" aria-hidden="true"></i>&nbsp;<i>{{location}}</i></p>
+                      {{else}}
+                      <p><i class="fa fa-map-marker-alt" aria-hidden="true"></i>&nbsp;<i>{{location}}</i></p>
+                      {{/if}}
+                      {{/if}}
+                      {{#if shabbat}}
+                      <p><i class="fa fa-menorah" aria-hidden="true"></i>&nbsp;Шаббатний формат</p>
+                      {{/if}}
+                      {{#if recommend}}
+                      <p><i class="fa fa-book-reader" aria-hidden="true"></i>&nbsp;«Бабель» рекомендует</p>
+                      {{/if}}
+                      <p><i class="fa fa-clock" aria-hidden="true"></i>&nbsp;{{sessiondate_ru}}, <span>{{start}} - {{end}}</span></p>
                       <hr class="clear-both">
                       {{#if description}}
                       <p>
@@ -131,7 +159,7 @@
                             <img class="card-img-top speaker-image-small" src="dependencies/avatar.png"/>
                           {{/if}}
                           </p>
-                          <span class="graytext ">{{name}}</span>
+                          <p><span class="graytext ">{{name}}</span></p>
                         </a>
                         {{#if organisation}}
                         <p>
@@ -143,18 +171,13 @@
                           <i>{{short_biography}}</i>
                         </p>
                         {{/if}}
-                        {{!--
                         {{#if long_biography}}
                         <p>
                           {{long_biography}}
                         </p>
                         {{/if}}
-                        --}}
                         <hr class="clear-both">
                         {{/each}}
-                        <div class="blacktext">
-                          <p>{{sessiondate_ru}}, <span>{{start}} - {{end}}</span></p><br />
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -191,8 +214,8 @@
         var temp = JSON.parse(localStorage["{{eventurls.name}}"]);
         var id = Number($(this).attr('id').substring(9));
         var curColor = $(this).css("color");
-        $(this).css("color", "rgb(127, 127, 127)");
         if (curColor == "rgb(255, 255, 0)") {
+          $(this).css("color", "rgb(127, 127, 127)");
           temp[id] = 0;
         }
         else {

@@ -104,7 +104,10 @@
                           {{#if language}}&nbsp;&nbsp;&nbsp;{{/if}}<i class="fa fa-map-marker-alt" aria-hidden="true"></i>&nbsp;{{location}}
                           {{/if}}
                           {{#if shabbat}}
-                          &nbsp;&nbsp;&nbsp;<i class="fa fa-menorah" aria-hidden="true"></i>&nbsp;шабат
+                          &nbsp;&nbsp;&nbsp;<i class="fa fa-menorah" aria-hidden="true"></i>&nbsp;шаббат
+                          {{/if}}
+                          {{#if recommend}}
+                          &nbsp;&nbsp;&nbsp;<i class="fa fa-book-reader" aria-hidden="true"></i>
                           {{/if}}
                           </h6>
                         </div>
@@ -123,7 +126,10 @@
                       {{/if}}
                       {{/if}}
                       {{#if shabbat}}
-                      <p><i class="fa fa-menorah" aria-hidden="true"></i>&nbsp;Шабатний формат</p>
+                      <p><i class="fa fa-menorah" aria-hidden="true"></i>&nbsp;Шаббатний формат</p>
+                      {{/if}}
+                      {{#if recommend}}
+                      <p><i class="fa fa-book-reader" aria-hidden="true"></i>&nbsp;«Бабель» рекомендует</p>
                       {{/if}}
                       <p><i class="fa fa-clock" aria-hidden="true"></i>&nbsp;{{sessiondate_ru}}, <span>{{start}} - {{end}}</span></p>
                       <hr class="clear-both">
@@ -154,12 +160,12 @@
                         {{/if}}
                         {{#if short_biography}}
                         <p>
-                          <i>{{short_biography}}</i>
+                          <i>{{{short_biography}}}</i>
                         </p>
                         {{/if}}
                         {{#if long_biography}}
                         <p>
-                          {{long_biography}}
+                          {{{long_biography}}}
                         </p>
                         {{/if}}
                         <hr class="clear-both">
